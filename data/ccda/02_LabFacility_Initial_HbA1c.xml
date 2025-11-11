@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- CCDA Document 2: Lab Facility - First HbA1c and Metabolic Panel -->
+<ClinicalDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:hl7-org:v3" xmlns:sdtc="urn:hl7-org:sdtc">
+  <realmCode code="US"/>
+  <typeId root="2.16.840.1.113883.1.3" extension="POCD_HD000040"/>
+  <templateId root="2.16.840.1.113883.10.20.22.1.1" extension="2015-08-01"/>
+  <id root="2.16.840.1.113883.19.5.99999.2" extension="DOC002"/>
+  <code code="11502-2" displayName="Laboratory report" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+  <title>Laboratory Report - Diabetes Initial Workup</title>
+  <effectiveTime value="20220118080000-0500"/>
+  <confidentialityCode code="N" codeSystem="2.16.840.1.113883.5.25"/>
+  <languageCode code="en-US"/>
+  <recordTarget>
+    <patientRole>
+      <id root="2.16.840.1.113883.4.1" extension="555-77-8888"/>
+      <addr use="HP">
+        <streetAddressLine>742 Maple Avenue</streetAddressLine>
+        <city>Chicago</city>
+        <state>IL</state>
+        <postalCode>60614</postalCode>
+        <country>US</country>
+      </addr>
+      <telecom value="tel:+1(312)-555-7890" use="HP"/>
+      <patient>
+        <name use="L">
+          <given>John</given>
+          <given>Michael</given>
+          <family>Martinez</family>
+        </name>
+        <administrativeGenderCode code="M" displayName="Male" codeSystem="2.16.840.1.113883.5.1"/>
+        <birthTime value="19670820"/>
+        <raceCode code="2148-5" displayName="Mexican" codeSystem="2.16.840.1.113883.6.238"/>
+        <ethnicGroupCode code="2135-2" displayName="Hispanic or Latino" codeSystem="2.16.840.1.113883.6.238"/>
+      </patient>
+      <providerOrganization>
+        <id extension="LAB001" root="2.16.840.1.113883.4.6"/>
+        <name>Quest Diagnostics - Chicago North</name>
+        <telecom use="WP" value="tel:+1(312)-555-8000"/>
+        <addr>
+          <streetAddressLine>2100 Lincoln Avenue</streetAddressLine>
+          <city>Chicago</city>
+          <state>IL</state>
+          <postalCode>60614</postalCode>
+          <country>US</country>
+        </addr>
+      </providerOrganization>
+    </patientRole>
+  </recordTarget>
+  <author>
+    <time value="20220118080000-0500"/>
+    <assignedAuthor>
+      <id extension="LAB567" root="2.16.840.1.113883.4.6"/>
+      <addr>
+        <streetAddressLine>2100 Lincoln Avenue</streetAddressLine>
+        <city>Chicago</city>
+        <state>IL</state>
+        <postalCode>60614</postalCode>
+        <country>US</country>
+      </addr>
+      <telecom use="WP" value="tel:+1(312)-555-8001"/>
+      <assignedPerson>
+        <name>
+          <prefix>Dr.</prefix>
+          <given>Michael</given>
+          <family>Chen</family>
+        </name>
+      </assignedPerson>
+    </assignedAuthor>
+  </author>
+  <custodian>
+    <assignedCustodian>
+      <representedCustodianOrganization>
+        <id extension="LAB001" root="2.16.840.1.113883.4.6"/>
+        <name>Quest Diagnostics - Chicago North</name>
+        <telecom value="tel:+1(312)-555-8000" use="WP"/>
+        <addr use="WP">
+          <streetAddressLine>2100 Lincoln Avenue</streetAddressLine>
+          <city>Chicago</city>
+          <state>IL</state>
+          <postalCode>60614</postalCode>
+          <country>US</country>
+        </addr>
+      </representedCustodianOrganization>
+    </assignedCustodian>
+  </custodian>
+  <component>
+    <structuredBody>
+      <!-- RESULTS SECTION -->
+      <component>
+        <section>
+          <templateId root="2.16.840.1.113883.10.20.22.2.3.1" extension="2015-08-01"/>
+          <code code="30954-2" codeSystem="2.16.840.1.113883.6.1" displayName="Relevant diagnostic tests and/or laboratory data"/>
+          <title>Laboratory Results</title>
+          <text>
+            <paragraph styleCode="Bold Underline">Hemoglobin A1c</paragraph>
+            <table border="1">
+              <thead>
+                <tr>
+                  <th>Test</th>
+                  <th>Value</th>
+                  <th>Units</th>
+                  <th>Reference Range</th>
+                  <th>Interpretation</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><content ID="LAB1">Hemoglobin A1c</content></td>
+                  <td><content ID="LAB1VAL">6.8</content></td>
+                  <td><content ID="LAB1UNIT">%</content></td>
+                  <td><content ID="LAB1REF">&lt;5.7% Normal</content></td>
+                  <td><content ID="LAB1INTERP">Elevated</content></td>
+                </tr>
+              </tbody>
+            </table>
+            <paragraph styleCode="Bold Underline">Metabolic Panel</paragraph>
+            <table border="1">
+              <thead>
+                <tr>
+                  <th>Test</th>
+                  <th>Value</th>
+                  <th>Units</th>
+                  <th>Reference Range</th>
+                  <th>Interpretation</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><content ID="LAB2">Fasting Glucose</content></td>
+                  <td><content ID="LAB2VAL">138</content></td>
+                  <td><content ID="LAB2UNIT">mg/dL</content></td>
+                  <td><content ID="LAB2REF">70-99 mg/dL</content></td>
+                  <td><content ID="LAB2INTERP">High</content></td>
+                </tr>
+                <tr>
+                  <td><content ID="LAB3">Creatinine</content></td>
+                  <td><content ID="LAB3VAL">1.0</content></td>
+                  <td><content ID="LAB3UNIT">mg/dL</content></td>
+                  <td><content ID="LAB3REF">0.7-1.3 mg/dL</content></td>
+                  <td><content ID="LAB3INTERP">Normal</content></td>
+                </tr>
+                <tr>
+                  <td><content ID="LAB4">eGFR</content></td>
+                  <td><content ID="LAB4VAL">92</content></td>
+                  <td><content ID="LAB4UNIT">mL/min/1.73m2</content></td>
+                  <td><content ID="LAB4REF">&gt;90 mL/min/1.73m2</content></td>
+                  <td><content ID="LAB4INTERP">Normal</content></td>
+                </tr>
+              </tbody>
+            </table>
+            <paragraph styleCode="Bold Underline">Lipid Panel</paragraph>
+            <table border="1">
+              <thead>
+                <tr>
+                  <th>Test</th>
+                  <th>Value</th>
+                  <th>Units</th>
+                  <th>Reference Range</th>
+                  <th>Interpretation</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><content ID="LAB5">Total Cholesterol</content></td>
+                  <td><content ID="LAB5VAL">225</content></td>
+                  <td><content ID="LAB5UNIT">mg/dL</content></td>
+                  <td><content ID="LAB5REF">&lt;200 mg/dL</content></td>
+                  <td><content ID="LAB5INTERP">High</content></td>
+                </tr>
+                <tr>
+                  <td><content ID="LAB6">LDL Cholesterol</content></td>
+                  <td><content ID="LAB6VAL">145</content></td>
+                  <td><content ID="LAB6UNIT">mg/dL</content></td>
+                  <td><content ID="LAB6REF">&lt;100 mg/dL</content></td>
+                  <td><content ID="LAB6INTERP">High</content></td>
+                </tr>
+                <tr>
+                  <td><content ID="LAB7">HDL Cholesterol</content></td>
+                  <td><content ID="LAB7VAL">42</content></td>
+                  <td><content ID="LAB7UNIT">mg/dL</content></td>
+                  <td><content ID="LAB7REF">&gt;40 mg/dL</content></td>
+                  <td><content ID="LAB7INTERP">Normal</content></td>
+                </tr>
+                <tr>
+                  <td><content ID="LAB8">Triglycerides</content></td>
+                  <td><content ID="LAB8VAL">190</content></td>
+                  <td><content ID="LAB8UNIT">mg/dL</content></td>
+                  <td><content ID="LAB8REF">&lt;150 mg/dL</content></td>
+                  <td><content ID="LAB8INTERP">High</content></td>
+                </tr>
+              </tbody>
+            </table>
+          </text>
+          <entry typeCode="DRIV">
+            <organizer classCode="BATTERY" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.1"/>
+              <id root="2.16.840.1.113883.3.3619" extension="HBA1C_PANEL_1"/>
+              <code code="4548-4" codeSystem="2.16.840.1.113883.6.1" displayName="Hemoglobin A1c"/>
+              <statusCode code="completed"/>
+              <effectiveTime value="20220118080000-0500"/>
+              <component>
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.2"/>
+                  <id root="2.16.840.1.113883.3.3619" extension="HBA1C_OBS_1"/>
+                  <code code="4548-4" codeSystem="2.16.840.1.113883.6.1" displayName="Hemoglobin A1c/Hemoglobin.total in Blood">
+                    <originalText><reference value="#LAB1"/></originalText>
+                  </code>
+                  <statusCode code="completed"/>
+                  <effectiveTime value="20220118080000-0500"/>
+                  <value xsi:type="PQ" value="6.8" unit="%"/>
+                  <interpretationCode code="H" codeSystem="2.16.840.1.113883.5.83" displayName="High"/>
+                  <referenceRange>
+                    <observationRange>
+                      <text>&lt;5.7% Normal, 5.7-6.4% Prediabetes, &gt;6.5% Diabetes</text>
+                    </observationRange>
+                  </referenceRange>
+                </observation>
+              </component>
+            </organizer>
+          </entry>
+          <entry typeCode="DRIV">
+            <organizer classCode="BATTERY" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.1"/>
+              <id root="2.16.840.1.113883.3.3619" extension="GLUCOSE_PANEL_1"/>
+              <code code="2339-0" codeSystem="2.16.840.1.113883.6.1" displayName="Glucose"/>
+              <statusCode code="completed"/>
+              <effectiveTime value="20220118080000-0500"/>
+              <component>
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.2"/>
+                  <id root="2.16.840.1.113883.3.3619" extension="GLUCOSE_OBS_1"/>
+                  <code code="2339-0" codeSystem="2.16.840.1.113883.6.1" displayName="Glucose [Mass/volume] in Blood">
+                    <originalText><reference value="#LAB2"/></originalText>
+                  </code>
+                  <statusCode code="completed"/>
+                  <effectiveTime value="20220118080000-0500"/>
+                  <value xsi:type="PQ" value="138" unit="mg/dL"/>
+                  <interpretationCode code="H" codeSystem="2.16.840.1.113883.5.83" displayName="High"/>
+                  <referenceRange>
+                    <observationRange>
+                      <text>70-99 mg/dL</text>
+                    </observationRange>
+                  </referenceRange>
+                </observation>
+              </component>
+            </organizer>
+          </entry>
+          <entry typeCode="DRIV">
+            <organizer classCode="BATTERY" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.1"/>
+              <id root="2.16.840.1.113883.3.3619" extension="KIDNEY_PANEL_1"/>
+              <code code="24362-6" codeSystem="2.16.840.1.113883.6.1" displayName="Renal function panel"/>
+              <statusCode code="completed"/>
+              <effectiveTime value="20220118080000-0500"/>
+              <component>
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.2"/>
+                  <id root="2.16.840.1.113883.3.3619" extension="CREAT_OBS_1"/>
+                  <code code="2160-0" codeSystem="2.16.840.1.113883.6.1" displayName="Creatinine">
+                    <originalText><reference value="#LAB3"/></originalText>
+                  </code>
+                  <statusCode code="completed"/>
+                  <effectiveTime value="20220118080000-0500"/>
+                  <value xsi:type="PQ" value="1.0" unit="mg/dL"/>
+                  <interpretationCode code="N" codeSystem="2.16.840.1.113883.5.83" displayName="Normal"/>
+                  <referenceRange>
+                    <observationRange>
+                      <text>0.7-1.3 mg/dL</text>
+                    </observationRange>
+                  </referenceRange>
+                </observation>
+              </component>
+              <component>
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.2"/>
+                  <id root="2.16.840.1.113883.3.3619" extension="EGFR_OBS_1"/>
+                  <code code="33914-3" codeSystem="2.16.840.1.113883.6.1" displayName="eGFR">
+                    <originalText><reference value="#LAB4"/></originalText>
+                  </code>
+                  <statusCode code="completed"/>
+                  <effectiveTime value="20220118080000-0500"/>
+                  <value xsi:type="PQ" value="92" unit="mL/min/1.73m2"/>
+                  <interpretationCode code="N" codeSystem="2.16.840.1.113883.5.83" displayName="Normal"/>
+                  <referenceRange>
+                    <observationRange>
+                      <text>&gt;90 mL/min/1.73m2</text>
+                    </observationRange>
+                  </referenceRange>
+                </observation>
+              </component>
+            </organizer>
+          </entry>
+          <entry typeCode="DRIV">
+            <organizer classCode="BATTERY" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.1"/>
+              <id root="2.16.840.1.113883.3.3619" extension="LIPID_PANEL_1"/>
+              <code code="24331-1" codeSystem="2.16.840.1.113883.6.1" displayName="Lipid panel"/>
+              <statusCode code="completed"/>
+              <effectiveTime value="20220118080000-0500"/>
+              <component>
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.2"/>
+                  <id root="2.16.840.1.113883.3.3619" extension="CHOL_OBS_1"/>
+                  <code code="2093-3" codeSystem="2.16.840.1.113883.6.1" displayName="Total Cholesterol">
+                    <originalText><reference value="#LAB5"/></originalText>
+                  </code>
+                  <statusCode code="completed"/>
+                  <effectiveTime value="20220118080000-0500"/>
+                  <value xsi:type="PQ" value="225" unit="mg/dL"/>
+                  <interpretationCode code="H" codeSystem="2.16.840.1.113883.5.83" displayName="High"/>
+                </observation>
+              </component>
+              <component>
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.2"/>
+                  <id root="2.16.840.1.113883.3.3619" extension="LDL_OBS_1"/>
+                  <code code="18262-6" codeSystem="2.16.840.1.113883.6.1" displayName="LDL Cholesterol">
+                    <originalText><reference value="#LAB6"/></originalText>
+                  </code>
+                  <statusCode code="completed"/>
+                  <effectiveTime value="20220118080000-0500"/>
+                  <value xsi:type="PQ" value="145" unit="mg/dL"/>
+                  <interpretationCode code="H" codeSystem="2.16.840.1.113883.5.83" displayName="High"/>
+                </observation>
+              </component>
+              <component>
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.2"/>
+                  <id root="2.16.840.1.113883.3.3619" extension="HDL_OBS_1"/>
+                  <code code="2085-9" codeSystem="2.16.840.1.113883.6.1" displayName="HDL Cholesterol">
+                    <originalText><reference value="#LAB7"/></originalText>
+                  </code>
+                  <statusCode code="completed"/>
+                  <effectiveTime value="20220118080000-0500"/>
+                  <value xsi:type="PQ" value="42" unit="mg/dL"/>
+                  <interpretationCode code="N" codeSystem="2.16.840.1.113883.5.83" displayName="Normal"/>
+                </observation>
+              </component>
+              <component>
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.2"/>
+                  <id root="2.16.840.1.113883.3.3619" extension="TRIG_OBS_1"/>
+                  <code code="2571-8" codeSystem="2.16.840.1.113883.6.1" displayName="Triglycerides">
+                    <originalText><reference value="#LAB8"/></originalText>
+                  </code>
+                  <statusCode code="completed"/>
+                  <effectiveTime value="20220118080000-0500"/>
+                  <value xsi:type="PQ" value="190" unit="mg/dL"/>
+                  <interpretationCode code="H" codeSystem="2.16.840.1.113883.5.83" displayName="High"/>
+                </observation>
+              </component>
+            </organizer>
+          </entry>
+        </section>
+      </component>
+    </structuredBody>
+  </component>
+</ClinicalDocument>
