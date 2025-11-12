@@ -51,3 +51,20 @@ Files of interest
 - reference loaders: clinical_record_companion/knowledge_base.py
 - synthetic data: clinical-record-companion/data/synthetic/
 - reference data: clinical-record-companion/data/reference/
+
+GCP Import Options
+- Cloud Shell or Vertex AI Workbench
+  - git clone this repo and run the Quick Start commands from the repo root.
+  - Artifacts are written to clinical-record-companion/exports/.
+- Cloud Run (containerized)
+  - Build: docker build -t cr-companion:demo .
+  - Run locally: docker run --rm -it -v %cd%:/work -w /work cr-companion:demo python -m clinical_record_companion export --records clinical-record-companion/data/synthetic/record_a.xml clinical-record-companion/data/synthetic/record_b.xml --kb clinical-record-companion/data/reference/MedicationKnowledgeBase.csv --crosswalk clinical-record-companion/data/reference/AllergyCrosswalk.csv --out clinical-record-companion/exports
+  - Push to Artifact Registry and deploy a job or service if desired.
+- Vertex AI Search (grounding)
+  - Use clinical-record-companion/exports/search_docs.ndjson as a seed corpus for a Data Store.
+  - Each line is one document with a section and text payload suitable for quick demos.
+
+Repo Hygiene
+- .gitignore prevents committing local exports and caches.
+- requirements.txt is intentionally minimal (stdlib only).
+- GitHub Actions CI runs unit tests on pushes and PRs.
