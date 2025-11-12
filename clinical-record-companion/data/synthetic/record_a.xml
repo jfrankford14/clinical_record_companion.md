@@ -1,0 +1,82 @@
+<ClinicalDocument>
+  <recordTarget>
+    <patientRole>
+      <patient>
+        <name>
+          <given>Mary</given>
+          <family>Thompson</family>
+        </name>
+        <birthTime value="19570214"/>
+        <administrativeGenderCode code="F"/>
+      </patient>
+    </patientRole>
+  </recordTarget>
+
+  <author>
+    <assignedAuthor>
+      <representedOrganization>
+        <id root="FAC_A"/>
+        <name>Facility A</name>
+      </representedOrganization>
+    </assignedAuthor>
+  </author>
+
+  <component>
+    <section>
+      <code code="10160-0" displayName="Medications"/>
+      <title>Medications</title>
+      <entry>
+        <substanceAdministration>
+          <consumable>
+            <manufacturedProduct>
+              <manufacturedLabeledDrug>
+                <name>Lisinopril</name>
+              </manufacturedLabeledDrug>
+            </manufacturedProduct>
+          </consumable>
+          <doseQuantity value="10 mg"/>
+          <statusCode code="active"/>
+          <effectiveTime>
+            <low value="20240101"/>
+          </effectiveTime>
+        </substanceAdministration>
+      </entry>
+      <entry>
+        <substanceAdministration>
+          <consumable>
+            <manufacturedProduct>
+              <manufacturedLabeledDrug>
+                <name>Warfarin</name>
+              </manufacturedLabeledDrug>
+            </manufacturedProduct>
+          </consumable>
+          <doseQuantity value="5 mg"/>
+          <statusCode code="active"/>
+          <effectiveTime>
+            <low value="20240401"/>
+          </effectiveTime>
+        </substanceAdministration>
+      </entry>
+    </section>
+  </component>
+
+  <component>
+    <section>
+      <code code="48765-2" displayName="Allergies and Adverse Reactions"/>
+      <title>Allergies</title>
+      <entry>
+        <observation>
+          <value code="ALG" displayName="Allergy"/>
+          <participant>
+            <participantRole>
+              <playingEntity>
+                <code displayName="Penicillin"/>
+              </playingEntity>
+            </participantRole>
+          </participant>
+        </observation>
+      </entry>
+    </section>
+  </component>
+</ClinicalDocument>
+

@@ -1,0 +1,10 @@
+[
+  {
+    "pair": [
+      "warfarin",
+      "amoxicillin"
+    ],
+    "severity": "Moderate",
+    "note": "Amoxicillin may increase INR and bleeding risk when co-administered with Warfarin."
+  }
+]

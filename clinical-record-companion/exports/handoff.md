@@ -1,0 +1,1 @@
+Unified view shows meds: Amoxicillin, Lisinopril, Warfarin; allergies: Penicillin. Potential interactions: warfarin x amoxicillin (Moderate). Allergy-drug conflicts: amoxicillin vs penicillin (High). Recommend verifying allergy status, reconciling meds, and updating chart.

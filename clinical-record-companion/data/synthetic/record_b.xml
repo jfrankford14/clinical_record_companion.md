@@ -1,0 +1,71 @@
+<ClinicalDocument>
+  <recordTarget>
+    <patientRole>
+      <patient>
+        <name>
+          <given>Mary</given>
+          <family>Thompson</family>
+        </name>
+        <birthTime value="19570214"/>
+        <administrativeGenderCode code="F"/>
+      </patient>
+    </patientRole>
+  </recordTarget>
+
+  <author>
+    <assignedAuthor>
+      <representedOrganization>
+        <id root="FAC_B"/>
+        <name>Facility B</name>
+      </representedOrganization>
+    </assignedAuthor>
+  </author>
+
+  <component>
+    <section>
+      <code code="10160-0" displayName="Medications"/>
+      <title>Medications</title>
+      <entry>
+        <substanceAdministration>
+          <consumable>
+            <manufacturedProduct>
+              <manufacturedLabeledDrug>
+                <name>Lisinopril</name>
+              </manufacturedLabeledDrug>
+            </manufacturedProduct>
+          </consumable>
+          <doseQuantity value="10 mg"/>
+          <statusCode code="active"/>
+          <effectiveTime>
+            <low value="20240101"/>
+          </effectiveTime>
+        </substanceAdministration>
+      </entry>
+      <entry>
+        <substanceAdministration>
+          <consumable>
+            <manufacturedProduct>
+              <manufacturedLabeledDrug>
+                <name>Amoxicillin</name>
+              </manufacturedLabeledDrug>
+            </manufacturedProduct>
+          </consumable>
+          <doseQuantity value="500 mg"/>
+          <statusCode code="active"/>
+          <effectiveTime>
+            <low value="20240514"/>
+          </effectiveTime>
+        </substanceAdministration>
+      </entry>
+    </section>
+  </component>
+
+  <component>
+    <section>
+      <code code="48765-2" displayName="Allergies and Adverse Reactions"/>
+      <title>Allergies</title>
+      <!-- Intentionally omits Penicillin to demonstrate discrepancy -->
+    </section>
+  </component>
+</ClinicalDocument>
+

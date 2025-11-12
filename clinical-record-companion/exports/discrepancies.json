@@ -1,0 +1,15 @@
+{
+  "added": [
+    [
+      "Amoxicillin",
+      "500 mg"
+    ]
+  ],
+  "removed": [
+    [
+      "Warfarin",
+      "5 mg"
+    ]
+  ],
+  "changed": []
+}
