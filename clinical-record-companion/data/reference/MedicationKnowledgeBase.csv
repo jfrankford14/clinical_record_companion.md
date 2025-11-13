@@ -1,0 +1,5 @@
+DrugName,InteractionPair,Severity,Note
+Warfarin,Amoxicillin,Moderate,Amoxicillin may increase INR and bleeding risk when co-administered with Warfarin.
+Warfarin,Aspirin,Major,Additive antiplatelet/anticoagulant effect increasing bleeding risk.
+Lisinopril,Spironolactone,Moderate,Concomitant use may increase risk of hyperkalemia.
+

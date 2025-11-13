@@ -1,0 +1,60 @@
+{
+  "patient": {
+    "given": "Mary",
+    "family": "Thompson",
+    "birthDate": "19570214",
+    "gender": "F"
+  },
+  "facilities": [
+    {
+      "id": "FAC_A",
+      "name": "Facility A"
+    },
+    {
+      "id": "FAC_B",
+      "name": "Facility B"
+    }
+  ],
+  "medications": [
+    {
+      "name": "Lisinopril",
+      "dose": "10 mg",
+      "route": "",
+      "status": "active",
+      "start_date": "2024-01-01",
+      "end_date": null,
+      "source_facility": "FAC_A",
+      "source_file": "record_a.xml"
+    },
+    {
+      "name": "Warfarin",
+      "dose": "5 mg",
+      "route": "",
+      "status": "active",
+      "start_date": "2024-04-01",
+      "end_date": null,
+      "source_facility": "FAC_A",
+      "source_file": "record_a.xml"
+    },
+    {
+      "name": "Amoxicillin",
+      "dose": "500 mg",
+      "route": "",
+      "status": "active",
+      "start_date": "2024-05-14",
+      "end_date": null,
+      "source_facility": "FAC_B",
+      "source_file": "record_b.xml"
+    }
+  ],
+  "allergies": [
+    {
+      "substance": "Penicillin",
+      "reaction": null,
+      "severity": null,
+      "type": "ALG",
+      "source_facility": "FAC_A",
+      "source_file": "record_a.xml"
+    }
+  ]
+}

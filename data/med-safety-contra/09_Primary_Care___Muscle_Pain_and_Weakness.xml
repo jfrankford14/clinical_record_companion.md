@@ -1,0 +1,767 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- CCDA Document 9: Primary Care - Muscle Pain and Weakness -->
+<ClinicalDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:hl7-org:v3" xmlns:sdtc="urn:hl7-org:sdtc">
+  <realmCode code="US"/>
+  <typeId root="2.16.840.1.113883.1.3" extension="POCD_HD000040"/>
+  <templateId root="2.16.840.1.113883.10.20.22.1.1" extension="2015-08-01"/>
+  <templateId root="2.16.840.1.113883.10.20.22.1.2" extension="2015-08-01"/>
+  <id root="2.16.840.1.113883.19.5.88888.9" extension="CON009"/>
+  <code code="34133-9" displayName="Office Visit Note" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+  <title>Primary Care - Muscle Pain and Weakness</title>
+  <effectiveTime value="20230704000000-0500"/>
+  <confidentialityCode code="N" codeSystem="2.16.840.1.113883.5.25"/>
+  <languageCode code="en-US"/>
+  <recordTarget>
+    <patientRole>
+      <id root="2.16.840.1.113883.4.1" extension="123-45-6789"/>
+      <addr use="HP">
+        <streetAddressLine>1847 Oakwood Drive</streetAddressLine>
+        <city>Boston</city>
+        <state>MA</state>
+        <postalCode>02115</postalCode>
+        <country>US</country>
+      </addr>
+      <telecom value="tel:+1(617)-555-2345" use="HP"/>
+      <patient>
+        <name use="L">
+          <given>Margaret</given>
+          <given>Ann</given>
+          <family>O'Brien</family>
+        </name>
+        <administrativeGenderCode code="F" displayName="Female" codeSystem="2.16.840.1.113883.5.1"/>
+        <birthTime value="19520315"/>
+        <raceCode code="2106-3" displayName="White" codeSystem="2.16.840.1.113883.6.238"/>
+        <ethnicGroupCode code="2186-5" displayName="Not Hispanic or Latino" codeSystem="2.16.840.1.113883.6.238"/>
+        <languageCommunication>
+          <languageCode code="en"/>
+          <preferenceInd value="true"/>
+        </languageCommunication>
+      </patient>
+      <providerOrganization>
+        <id extension="MGH001" root="2.16.840.1.113883.4.6"/>
+        <name>Massachusetts General Hospital - Primary Care</name>
+        <telecom use="WP" value="tel:+1(617)-726-2000"/>
+        <addr>
+          <streetAddressLine>55 Fruit Street</streetAddressLine>
+          <city>Boston</city>
+          <state>MA</state>
+          <postalCode>02114</postalCode>
+          <country>US</country>
+        </addr>
+      </providerOrganization>
+    </patientRole>
+  </recordTarget>
+  <author>
+    <time value="20230704000000-0500"/>
+    <assignedAuthor>
+      <id extension="PCP001" root="2.16.840.1.113883.4.6"/>
+      <code code="207R00000X" codeSystem="2.16.840.1.113883.6.101" displayName="Internal Medicine"/>
+      <addr>
+        <streetAddressLine>55 Fruit Street</streetAddressLine>
+        <city>Boston</city>
+        <state>MA</state>
+        <postalCode>02114</postalCode>
+        <country>US</country>
+      </addr>
+      <telecom use="WP" value="tel:+1(617)-726-2001"/>
+      <assignedPerson>
+        <name>
+          <prefix>Dr.</prefix>
+          <given>Thomas</given>
+          <family>Mitchell</family>
+        </name>
+      </assignedPerson>
+    </assignedAuthor>
+  </author>
+  <custodian>
+    <assignedCustodian>
+      <representedCustodianOrganization>
+        <id extension="MGH001" root="2.16.840.1.113883.4.6"/>
+        <name>Massachusetts General Hospital - Primary Care</name>
+        <telecom value="tel:+1(617)-726-2000" use="WP"/>
+        <addr use="WP">
+          <streetAddressLine>55 Fruit Street</streetAddressLine>
+          <city>Boston</city>
+          <state>MA</state>
+          <postalCode>02114</postalCode>
+          <country>US</country>
+        </addr>
+      </representedCustodianOrganization>
+    </assignedCustodian>
+  </custodian>
+  <component>
+    <structuredBody>      <component>
+        <section>
+          <templateId root="2.16.840.1.113883.10.20.22.2.5.1" extension="2015-08-01"/>
+          <code code="11450-4" codeSystem="2.16.840.1.113883.6.1" displayName="Problem List"/>
+          <title>Problems</title>
+          <text>
+            <table border="1">
+              <thead>
+                <tr>
+                  <th>Condition</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><content ID="PROBLEM1">Atrial Fibrillation</content></td>
+                  <td><content ID="PROBSTATUS1">Active</content></td>
+                </tr>
+                <tr>
+                  <td><content ID="PROBLEM2">Coronary Artery Disease</content></td>
+                  <td><content ID="PROBSTATUS2">Active</content></td>
+                </tr>
+                <tr>
+                  <td><content ID="PROBLEM3">Essential Hypertension</content></td>
+                  <td><content ID="PROBSTATUS3">Active</content></td>
+                </tr>
+                <tr>
+                  <td><content ID="PROBLEM4">Osteoarthritis of Knee</content></td>
+                  <td><content ID="PROBSTATUS4">Active</content></td>
+                </tr>
+                <tr>
+                  <td><content ID="PROBLEM5">Major Depressive Disorder</content></td>
+                  <td><content ID="PROBSTATUS5">Active</content></td>
+                </tr>
+                <tr>
+                  <td><content ID="PROBLEM6">Chronic Kidney Disease Stage 3B</content></td>
+                  <td><content ID="PROBSTATUS6">Active</content></td>
+                </tr>
+                <tr>
+                  <td><content ID="PROBLEM7">Statin-Induced Myopathy</content></td>
+                  <td><content ID="PROBSTATUS7">Active</content></td>
+                </tr>
+                <tr>
+                  <td><content ID="PROBLEM8">Rhabdomyolysis</content></td>
+                  <td><content ID="PROBSTATUS8">Active</content></td>
+                </tr>
+              </tbody>
+            </table>
+          </text>
+          <entry typeCode="DRIV">
+            <act classCode="ACT" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.3"/>
+              <id root="2.16.840.1.113883.3.8888" extension="CONCERN1"/>
+              <code code="CONC" codeSystem="2.16.840.1.113883.5.6"/>
+              <statusCode code="active"/>
+              <effectiveTime>
+                <low value="20230704"/>
+              </effectiveTime>
+              <entryRelationship typeCode="SUBJ">
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.4"/>
+                  <id root="2.16.840.1.113883.3.8888" extension="PROBLEM1"/>
+                  <code code="55607006" codeSystem="2.16.840.1.113883.6.96" displayName="Problem"/>
+                  <statusCode code="completed"/>
+                  <effectiveTime>
+                    <low value="20230704"/>
+                  </effectiveTime>
+                  <value xsi:type="CD" code="49436004" codeSystem="2.16.840.1.113883.6.96" displayName="Atrial Fibrillation"/>
+                </observation>
+              </entryRelationship>
+            </act>
+          </entry>
+          <entry typeCode="DRIV">
+            <act classCode="ACT" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.3"/>
+              <id root="2.16.840.1.113883.3.8888" extension="CONCERN2"/>
+              <code code="CONC" codeSystem="2.16.840.1.113883.5.6"/>
+              <statusCode code="active"/>
+              <effectiveTime>
+                <low value="20230704"/>
+              </effectiveTime>
+              <entryRelationship typeCode="SUBJ">
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.4"/>
+                  <id root="2.16.840.1.113883.3.8888" extension="PROBLEM2"/>
+                  <code code="55607006" codeSystem="2.16.840.1.113883.6.96" displayName="Problem"/>
+                  <statusCode code="completed"/>
+                  <effectiveTime>
+                    <low value="20230704"/>
+                  </effectiveTime>
+                  <value xsi:type="CD" code="53741008" codeSystem="2.16.840.1.113883.6.96" displayName="Coronary Artery Disease"/>
+                </observation>
+              </entryRelationship>
+            </act>
+          </entry>
+          <entry typeCode="DRIV">
+            <act classCode="ACT" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.3"/>
+              <id root="2.16.840.1.113883.3.8888" extension="CONCERN3"/>
+              <code code="CONC" codeSystem="2.16.840.1.113883.5.6"/>
+              <statusCode code="active"/>
+              <effectiveTime>
+                <low value="20230704"/>
+              </effectiveTime>
+              <entryRelationship typeCode="SUBJ">
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.4"/>
+                  <id root="2.16.840.1.113883.3.8888" extension="PROBLEM3"/>
+                  <code code="55607006" codeSystem="2.16.840.1.113883.6.96" displayName="Problem"/>
+                  <statusCode code="completed"/>
+                  <effectiveTime>
+                    <low value="20230704"/>
+                  </effectiveTime>
+                  <value xsi:type="CD" code="59621000" codeSystem="2.16.840.1.113883.6.96" displayName="Essential Hypertension"/>
+                </observation>
+              </entryRelationship>
+            </act>
+          </entry>
+          <entry typeCode="DRIV">
+            <act classCode="ACT" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.3"/>
+              <id root="2.16.840.1.113883.3.8888" extension="CONCERN4"/>
+              <code code="CONC" codeSystem="2.16.840.1.113883.5.6"/>
+              <statusCode code="active"/>
+              <effectiveTime>
+                <low value="20230704"/>
+              </effectiveTime>
+              <entryRelationship typeCode="SUBJ">
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.4"/>
+                  <id root="2.16.840.1.113883.3.8888" extension="PROBLEM4"/>
+                  <code code="55607006" codeSystem="2.16.840.1.113883.6.96" displayName="Problem"/>
+                  <statusCode code="completed"/>
+                  <effectiveTime>
+                    <low value="20230704"/>
+                  </effectiveTime>
+                  <value xsi:type="CD" code="239873007" codeSystem="2.16.840.1.113883.6.96" displayName="Osteoarthritis of Knee"/>
+                </observation>
+              </entryRelationship>
+            </act>
+          </entry>
+          <entry typeCode="DRIV">
+            <act classCode="ACT" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.3"/>
+              <id root="2.16.840.1.113883.3.8888" extension="CONCERN5"/>
+              <code code="CONC" codeSystem="2.16.840.1.113883.5.6"/>
+              <statusCode code="active"/>
+              <effectiveTime>
+                <low value="20230704"/>
+              </effectiveTime>
+              <entryRelationship typeCode="SUBJ">
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.4"/>
+                  <id root="2.16.840.1.113883.3.8888" extension="PROBLEM5"/>
+                  <code code="55607006" codeSystem="2.16.840.1.113883.6.96" displayName="Problem"/>
+                  <statusCode code="completed"/>
+                  <effectiveTime>
+                    <low value="20230704"/>
+                  </effectiveTime>
+                  <value xsi:type="CD" code="370143000" codeSystem="2.16.840.1.113883.6.96" displayName="Major Depressive Disorder"/>
+                </observation>
+              </entryRelationship>
+            </act>
+          </entry>
+          <entry typeCode="DRIV">
+            <act classCode="ACT" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.3"/>
+              <id root="2.16.840.1.113883.3.8888" extension="CONCERN6"/>
+              <code code="CONC" codeSystem="2.16.840.1.113883.5.6"/>
+              <statusCode code="active"/>
+              <effectiveTime>
+                <low value="20230704"/>
+              </effectiveTime>
+              <entryRelationship typeCode="SUBJ">
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.4"/>
+                  <id root="2.16.840.1.113883.3.8888" extension="PROBLEM6"/>
+                  <code code="55607006" codeSystem="2.16.840.1.113883.6.96" displayName="Problem"/>
+                  <statusCode code="completed"/>
+                  <effectiveTime>
+                    <low value="20230704"/>
+                  </effectiveTime>
+                  <value xsi:type="CD" code="433146000" codeSystem="2.16.840.1.113883.6.96" displayName="Chronic Kidney Disease Stage 3B"/>
+                </observation>
+              </entryRelationship>
+            </act>
+          </entry>
+          <entry typeCode="DRIV">
+            <act classCode="ACT" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.3"/>
+              <id root="2.16.840.1.113883.3.8888" extension="CONCERN7"/>
+              <code code="CONC" codeSystem="2.16.840.1.113883.5.6"/>
+              <statusCode code="active"/>
+              <effectiveTime>
+                <low value="20230704"/>
+              </effectiveTime>
+              <entryRelationship typeCode="SUBJ">
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.4"/>
+                  <id root="2.16.840.1.113883.3.8888" extension="PROBLEM7"/>
+                  <code code="55607006" codeSystem="2.16.840.1.113883.6.96" displayName="Problem"/>
+                  <statusCode code="completed"/>
+                  <effectiveTime>
+                    <low value="20230704"/>
+                  </effectiveTime>
+                  <value xsi:type="CD" code="95668009" codeSystem="2.16.840.1.113883.6.96" displayName="Statin-Induced Myopathy"/>
+                </observation>
+              </entryRelationship>
+            </act>
+          </entry>
+          <entry typeCode="DRIV">
+            <act classCode="ACT" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.3"/>
+              <id root="2.16.840.1.113883.3.8888" extension="CONCERN8"/>
+              <code code="CONC" codeSystem="2.16.840.1.113883.5.6"/>
+              <statusCode code="active"/>
+              <effectiveTime>
+                <low value="20230704"/>
+              </effectiveTime>
+              <entryRelationship typeCode="SUBJ">
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.4"/>
+                  <id root="2.16.840.1.113883.3.8888" extension="PROBLEM8"/>
+                  <code code="55607006" codeSystem="2.16.840.1.113883.6.96" displayName="Problem"/>
+                  <statusCode code="completed"/>
+                  <effectiveTime>
+                    <low value="20230704"/>
+                  </effectiveTime>
+                  <value xsi:type="CD" code="240131006" codeSystem="2.16.840.1.113883.6.96" displayName="Rhabdomyolysis"/>
+                </observation>
+              </entryRelationship>
+            </act>
+          </entry>
+        </section>
+      </component>      <component>
+        <section>
+          <templateId root="2.16.840.1.113883.10.20.22.2.1.1" extension="2014-06-09"/>
+          <code code="10160-0" codeSystem="2.16.840.1.113883.6.1" displayName="History of Medication Use"/>
+          <title>Medications</title>
+          <text>
+            <table border="1">
+              <thead>
+                <tr>
+                  <th>Medication</th>
+                  <th>Dosage</th>
+                  <th>Frequency</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><content ID="MED1">Warfarin 3 MG Oral Tablet</content></td>
+                  <td><content ID="DOSE1">3 mg</content></td>
+                  <td><content ID="FREQ1">Once daily</content></td>
+                  <td><content ID="STATUS1">Active</content></td>
+                </tr>
+                <tr>
+                  <td><content ID="MED2">Aspirin 81 MG Oral Tablet</content></td>
+                  <td><content ID="DOSE2">81 mg</content></td>
+                  <td><content ID="FREQ2">Once daily</content></td>
+                  <td><content ID="STATUS2">Active</content></td>
+                </tr>
+                <tr>
+                  <td><content ID="MED3">Clopidogrel 75 MG Oral Tablet</content></td>
+                  <td><content ID="DOSE3">75 mg</content></td>
+                  <td><content ID="FREQ3">Once daily</content></td>
+                  <td><content ID="STATUS3">Active</content></td>
+                </tr>
+                <tr>
+                  <td><content ID="MED4">Pantoprazole 40 MG Oral Tablet</content></td>
+                  <td><content ID="DOSE4">40 mg</content></td>
+                  <td><content ID="FREQ4">Once daily</content></td>
+                  <td><content ID="STATUS4">Active</content></td>
+                </tr>
+                <tr>
+                  <td><content ID="MED5">Metoprolol Succinate 100 MG Extended Release Tablet</content></td>
+                  <td><content ID="DOSE5">100 mg</content></td>
+                  <td><content ID="FREQ5">Once daily</content></td>
+                  <td><content ID="STATUS5">Active</content></td>
+                </tr>
+                <tr>
+                  <td><content ID="MED6">Diltiazem HCl 120 MG Extended Release Capsule</content></td>
+                  <td><content ID="DOSE6">120 mg</content></td>
+                  <td><content ID="FREQ6">Once daily (ADDED for AFib rate control)</content></td>
+                  <td><content ID="STATUS6">Active</content></td>
+                </tr>
+                <tr>
+                  <td><content ID="MED7">Lisinopril 10 MG Oral Tablet</content></td>
+                  <td><content ID="DOSE7">10 mg</content></td>
+                  <td><content ID="FREQ7">Once daily</content></td>
+                  <td><content ID="STATUS7">Active</content></td>
+                </tr>
+                <tr>
+                  <td><content ID="MED8">Atorvastatin 80 MG Oral Tablet</content></td>
+                  <td><content ID="DOSE8">80 mg</content></td>
+                  <td><content ID="FREQ8">Once daily</content></td>
+                  <td><content ID="STATUS8">Active</content></td>
+                </tr>
+                <tr>
+                  <td><content ID="MED9">Sertraline 50 MG Oral Tablet</content></td>
+                  <td><content ID="DOSE9">50 mg</content></td>
+                  <td><content ID="FREQ9">Once daily</content></td>
+                  <td><content ID="STATUS9">Active</content></td>
+                </tr>
+              </tbody>
+            </table>
+          </text>
+          <entry typeCode="DRIV">
+            <substanceAdministration classCode="SBADM" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.16"/>
+              <id root="2.16.840.1.113883.3.8888" extension="MEDENTRY1"/>
+              <statusCode code="active"/>
+              <effectiveTime xsi:type="IVL_TS">
+                <low value="20230704"/>
+                <high nullFlavor="UNK"/>
+              </effectiveTime>
+              <effectiveTime xsi:type="PIVL_TS" institutionSpecified="true" operator="A">
+                <period value="24" unit="h"/>
+              </effectiveTime>
+              <routeCode code="C38288" codeSystem="2.16.840.1.113883.3.26.1.1" displayName="Oral"/>
+              <doseQuantity value="3" unit="mg"/>
+              <consumable>
+                <manufacturedProduct classCode="MANU">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.23"/>
+                  <manufacturedMaterial>
+                    <code code="855302" codeSystem="2.16.840.1.113883.6.88" codeSystemName="RxNorm" displayName="Warfarin 3 MG Oral Tablet">
+                      <originalText><reference value="#MED1"/></originalText>
+                    </code>
+                  </manufacturedMaterial>
+                </manufacturedProduct>
+              </consumable>
+            </substanceAdministration>
+          </entry>
+          <entry typeCode="DRIV">
+            <substanceAdministration classCode="SBADM" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.16"/>
+              <id root="2.16.840.1.113883.3.8888" extension="MEDENTRY2"/>
+              <statusCode code="active"/>
+              <effectiveTime xsi:type="IVL_TS">
+                <low value="20230704"/>
+                <high nullFlavor="UNK"/>
+              </effectiveTime>
+              <effectiveTime xsi:type="PIVL_TS" institutionSpecified="true" operator="A">
+                <period value="24" unit="h"/>
+              </effectiveTime>
+              <routeCode code="C38288" codeSystem="2.16.840.1.113883.3.26.1.1" displayName="Oral"/>
+              <doseQuantity value="81" unit="mg"/>
+              <consumable>
+                <manufacturedProduct classCode="MANU">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.23"/>
+                  <manufacturedMaterial>
+                    <code code="243670" codeSystem="2.16.840.1.113883.6.88" codeSystemName="RxNorm" displayName="Aspirin 81 MG Oral Tablet">
+                      <originalText><reference value="#MED2"/></originalText>
+                    </code>
+                  </manufacturedMaterial>
+                </manufacturedProduct>
+              </consumable>
+            </substanceAdministration>
+          </entry>
+          <entry typeCode="DRIV">
+            <substanceAdministration classCode="SBADM" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.16"/>
+              <id root="2.16.840.1.113883.3.8888" extension="MEDENTRY3"/>
+              <statusCode code="active"/>
+              <effectiveTime xsi:type="IVL_TS">
+                <low value="20230704"/>
+                <high nullFlavor="UNK"/>
+              </effectiveTime>
+              <effectiveTime xsi:type="PIVL_TS" institutionSpecified="true" operator="A">
+                <period value="24" unit="h"/>
+              </effectiveTime>
+              <routeCode code="C38288" codeSystem="2.16.840.1.113883.3.26.1.1" displayName="Oral"/>
+              <doseQuantity value="75" unit="mg"/>
+              <consumable>
+                <manufacturedProduct classCode="MANU">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.23"/>
+                  <manufacturedMaterial>
+                    <code code="309362" codeSystem="2.16.840.1.113883.6.88" codeSystemName="RxNorm" displayName="Clopidogrel 75 MG Oral Tablet">
+                      <originalText><reference value="#MED3"/></originalText>
+                    </code>
+                  </manufacturedMaterial>
+                </manufacturedProduct>
+              </consumable>
+            </substanceAdministration>
+          </entry>
+          <entry typeCode="DRIV">
+            <substanceAdministration classCode="SBADM" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.16"/>
+              <id root="2.16.840.1.113883.3.8888" extension="MEDENTRY4"/>
+              <statusCode code="active"/>
+              <effectiveTime xsi:type="IVL_TS">
+                <low value="20230704"/>
+                <high nullFlavor="UNK"/>
+              </effectiveTime>
+              <effectiveTime xsi:type="PIVL_TS" institutionSpecified="true" operator="A">
+                <period value="24" unit="h"/>
+              </effectiveTime>
+              <routeCode code="C38288" codeSystem="2.16.840.1.113883.3.26.1.1" displayName="Oral"/>
+              <doseQuantity value="40" unit="mg"/>
+              <consumable>
+                <manufacturedProduct classCode="MANU">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.23"/>
+                  <manufacturedMaterial>
+                    <code code="261242" codeSystem="2.16.840.1.113883.6.88" codeSystemName="RxNorm" displayName="Pantoprazole 40 MG Oral Tablet">
+                      <originalText><reference value="#MED4"/></originalText>
+                    </code>
+                  </manufacturedMaterial>
+                </manufacturedProduct>
+              </consumable>
+            </substanceAdministration>
+          </entry>
+          <entry typeCode="DRIV">
+            <substanceAdministration classCode="SBADM" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.16"/>
+              <id root="2.16.840.1.113883.3.8888" extension="MEDENTRY5"/>
+              <statusCode code="active"/>
+              <effectiveTime xsi:type="IVL_TS">
+                <low value="20230704"/>
+                <high nullFlavor="UNK"/>
+              </effectiveTime>
+              <effectiveTime xsi:type="PIVL_TS" institutionSpecified="true" operator="A">
+                <period value="24" unit="h"/>
+              </effectiveTime>
+              <routeCode code="C38288" codeSystem="2.16.840.1.113883.3.26.1.1" displayName="Oral"/>
+              <doseQuantity value="100" unit="mg"/>
+              <consumable>
+                <manufacturedProduct classCode="MANU">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.23"/>
+                  <manufacturedMaterial>
+                    <code code="686924" codeSystem="2.16.840.1.113883.6.88" codeSystemName="RxNorm" displayName="Metoprolol Succinate 100 MG Extended Release Tablet">
+                      <originalText><reference value="#MED5"/></originalText>
+                    </code>
+                  </manufacturedMaterial>
+                </manufacturedProduct>
+              </consumable>
+            </substanceAdministration>
+          </entry>
+          <entry typeCode="DRIV">
+            <substanceAdministration classCode="SBADM" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.16"/>
+              <id root="2.16.840.1.113883.3.8888" extension="MEDENTRY6"/>
+              <statusCode code="active"/>
+              <effectiveTime xsi:type="IVL_TS">
+                <low value="20230704"/>
+                <high nullFlavor="UNK"/>
+              </effectiveTime>
+              <effectiveTime xsi:type="PIVL_TS" institutionSpecified="true" operator="A">
+                <period value="24" unit="h"/>
+              </effectiveTime>
+              <routeCode code="C38288" codeSystem="2.16.840.1.113883.3.26.1.1" displayName="Oral"/>
+              <doseQuantity value="120" unit="mg"/>
+              <consumable>
+                <manufacturedProduct classCode="MANU">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.23"/>
+                  <manufacturedMaterial>
+                    <code code="197379" codeSystem="2.16.840.1.113883.6.88" codeSystemName="RxNorm" displayName="Diltiazem HCl 120 MG Extended Release Capsule">
+                      <originalText><reference value="#MED6"/></originalText>
+                    </code>
+                  </manufacturedMaterial>
+                </manufacturedProduct>
+              </consumable>
+            </substanceAdministration>
+          </entry>
+          <entry typeCode="DRIV">
+            <substanceAdministration classCode="SBADM" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.16"/>
+              <id root="2.16.840.1.113883.3.8888" extension="MEDENTRY7"/>
+              <statusCode code="active"/>
+              <effectiveTime xsi:type="IVL_TS">
+                <low value="20230704"/>
+                <high nullFlavor="UNK"/>
+              </effectiveTime>
+              <effectiveTime xsi:type="PIVL_TS" institutionSpecified="true" operator="A">
+                <period value="24" unit="h"/>
+              </effectiveTime>
+              <routeCode code="C38288" codeSystem="2.16.840.1.113883.3.26.1.1" displayName="Oral"/>
+              <doseQuantity value="10" unit="mg"/>
+              <consumable>
+                <manufacturedProduct classCode="MANU">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.23"/>
+                  <manufacturedMaterial>
+                    <code code="314076" codeSystem="2.16.840.1.113883.6.88" codeSystemName="RxNorm" displayName="Lisinopril 10 MG Oral Tablet">
+                      <originalText><reference value="#MED7"/></originalText>
+                    </code>
+                  </manufacturedMaterial>
+                </manufacturedProduct>
+              </consumable>
+            </substanceAdministration>
+          </entry>
+          <entry typeCode="DRIV">
+            <substanceAdministration classCode="SBADM" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.16"/>
+              <id root="2.16.840.1.113883.3.8888" extension="MEDENTRY8"/>
+              <statusCode code="active"/>
+              <effectiveTime xsi:type="IVL_TS">
+                <low value="20230704"/>
+                <high nullFlavor="UNK"/>
+              </effectiveTime>
+              <effectiveTime xsi:type="PIVL_TS" institutionSpecified="true" operator="A">
+                <period value="24" unit="h"/>
+              </effectiveTime>
+              <routeCode code="C38288" codeSystem="2.16.840.1.113883.3.26.1.1" displayName="Oral"/>
+              <doseQuantity value="80" unit="mg"/>
+              <consumable>
+                <manufacturedProduct classCode="MANU">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.23"/>
+                  <manufacturedMaterial>
+                    <code code="617318" codeSystem="2.16.840.1.113883.6.88" codeSystemName="RxNorm" displayName="Atorvastatin 80 MG Oral Tablet">
+                      <originalText><reference value="#MED8"/></originalText>
+                    </code>
+                  </manufacturedMaterial>
+                </manufacturedProduct>
+              </consumable>
+            </substanceAdministration>
+          </entry>
+          <entry typeCode="DRIV">
+            <substanceAdministration classCode="SBADM" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.16"/>
+              <id root="2.16.840.1.113883.3.8888" extension="MEDENTRY9"/>
+              <statusCode code="active"/>
+              <effectiveTime xsi:type="IVL_TS">
+                <low value="20230704"/>
+                <high nullFlavor="UNK"/>
+              </effectiveTime>
+              <effectiveTime xsi:type="PIVL_TS" institutionSpecified="true" operator="A">
+                <period value="24" unit="h"/>
+              </effectiveTime>
+              <routeCode code="C38288" codeSystem="2.16.840.1.113883.3.26.1.1" displayName="Oral"/>
+              <doseQuantity value="50" unit="mg"/>
+              <consumable>
+                <manufacturedProduct classCode="MANU">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.23"/>
+                  <manufacturedMaterial>
+                    <code code="312940" codeSystem="2.16.840.1.113883.6.88" codeSystemName="RxNorm" displayName="Sertraline 50 MG Oral Tablet">
+                      <originalText><reference value="#MED9"/></originalText>
+                    </code>
+                  </manufacturedMaterial>
+                </manufacturedProduct>
+              </consumable>
+            </substanceAdministration>
+          </entry>
+        </section>
+      </component>      <component>
+        <section>
+          <templateId root="2.16.840.1.113883.10.20.22.2.4.1" extension="2015-08-01"/>
+          <code code="8716-3" codeSystem="2.16.840.1.113883.6.1" displayName="Vital Signs"/>
+          <title>Vital Signs</title>
+          <text>
+            <table border="1">
+              <thead>
+                <tr>
+                  <th>Vital Sign</th>
+                  <th>Value</th>
+                  <th>Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Weight</td>
+                  <td>66 kg</td>
+                  <td>07/04/2023</td>
+                </tr>
+                <tr>
+                  <td>Blood Pressure</td>
+                  <td>128/76 mmHg</td>
+                  <td>07/04/2023</td>
+                </tr>
+                <tr>
+                  <td>Heart Rate</td>
+                  <td>74 bpm</td>
+                  <td>07/04/2023</td>
+                </tr>
+              </tbody>
+            </table>
+          </text>
+          <entry typeCode="DRIV">
+            <organizer classCode="CLUSTER" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.26"/>
+              <id root="2.16.840.1.113883.3.8888" extension="VITALS1"/>
+              <code code="46680005" codeSystem="2.16.840.1.113883.6.96" displayName="Vital signs"/>
+              <statusCode code="completed"/>
+              <effectiveTime value="20230704000000-0500"/>
+              <component>
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.27"/>
+                  <code code="29463-7" codeSystem="2.16.840.1.113883.6.1" displayName="Weight"/>
+                  <statusCode code="completed"/>
+                  <effectiveTime value="20230704000000-0500"/>
+                  <value xsi:type="PQ" value="66" unit="kg"/>
+                </observation>
+              </component>
+              <component>
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.27"/>
+                  <code code="8480-6" codeSystem="2.16.840.1.113883.6.1" displayName="Systolic Blood Pressure"/>
+                  <statusCode code="completed"/>
+                  <effectiveTime value="20230704000000-0500"/>
+                  <value xsi:type="PQ" value="128" unit="mm[Hg]"/>
+                </observation>
+              </component>
+              <component>
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.27"/>
+                  <code code="8462-4" codeSystem="2.16.840.1.113883.6.1" displayName="Diastolic Blood Pressure"/>
+                  <statusCode code="completed"/>
+                  <effectiveTime value="20230704000000-0500"/>
+                  <value xsi:type="PQ" value="76" unit="mm[Hg]"/>
+                </observation>
+              </component>
+              <component>
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.27"/>
+                  <code code="8867-4" codeSystem="2.16.840.1.113883.6.1" displayName="Heart Rate"/>
+                  <statusCode code="completed"/>
+                  <effectiveTime value="20230704000000-0500"/>
+                  <value xsi:type="PQ" value="74" unit="/min"/>
+                </observation>
+              </component>
+            </organizer>
+          </entry>
+        </section>
+      </component>      <component>
+        <section>
+          <templateId root="2.16.840.1.113883.10.20.22.2.3.1" extension="2015-08-01"/>
+          <code code="30954-2" codeSystem="2.16.840.1.113883.6.1" displayName="Relevant diagnostic tests and/or laboratory data"/>
+          <title>Laboratory Results</title>
+          <text>
+            <table border="1">
+              <thead>
+                <tr>
+                  <th>Test</th>
+                  <th>Value</th>
+                  <th>Units</th>
+                  <th>Reference Range</th>
+                  <th>Interpretation</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Creatine Kinase (CK)</td>
+                  <td>2800</td>
+                  <td>U/L</td>
+                  <td>20-200</td>
+                  <td>Critical High - Rhabdomyolysis</td>
+                </tr>
+                <tr>
+                  <td>Creatinine</td>
+                  <td>1.8</td>
+                  <td>mg/dL</td>
+                  <td>0.6-1.2</td>
+                  <td>Elevated - Worsening</td>
+                </tr>
+                <tr>
+                  <td>INR</td>
+                  <td>3.2</td>
+                  <td></td>
+                  <td>2.0-3.0</td>
+                  <td>Slightly Supratherapeutic</td>
+                </tr>
+              </tbody>
+            </table>
+          </text>
+        </section>
+      </component>      <component>
+        <section>
+          <templateId root="2.16.840.1.113883.10.20.22.2.9"/>
+          <code code="51847-2" codeSystem="2.16.840.1.113883.6.1" displayName="Assessment and Plan"/>
+          <title>Assessment and Plan</title>
+          <text>
+            <paragraph>Patient reports severe muscle pain and weakness for past 2 weeks, particularly in thighs and shoulders. Difficulty climbing stairs and raising arms. Started atorvastatin 80mg 3 weeks ago post-MI. Multiple drug interactions with atorvastatin: 1) Diltiazem (added for rate control) increases atorvastatin levels via CYP3A4 inhibition, 2) Sertraline may increase myopathy risk, 3) CKD reduces statin clearance. Physical exam shows proximal muscle tenderness and weakness (4/5 strength). Ordered CK level (likely rhabdomyolysis). May need to reduce statin dose or switch to different statin.</paragraph>
+          </text>
+        </section>
+      </component>    </structuredBody>
+  </component>
+</ClinicalDocument>

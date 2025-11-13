@@ -1,0 +1,5 @@
+{"id": "mary-thompson-demo-meds", "section": "medications", "text": "Current medications: Amoxicillin 500 mg, Lisinopril 10 mg, Warfarin 5 mg", "source": "synthetic-ccda"}
+{"id": "mary-thompson-demo-allergies", "section": "allergies", "text": "Known allergies: Penicillin", "source": "synthetic-ccda"}
+{"id": "mary-thompson-demo-discrepancies", "section": "discrepancies", "text": "{\"added\": [[\"Amoxicillin\", \"500 mg\"]], \"removed\": [[\"Warfarin\", \"5 mg\"]], \"changed\": []}", "source": "synthetic-ccda"}
+{"id": "mary-thompson-demo-interactions", "section": "interactions", "text": "[{\"pair\": [\"warfarin\", \"amoxicillin\"], \"severity\": \"Moderate\", \"note\": \"Amoxicillin may increase INR and bleeding risk when co-administered with Warfarin.\"}]", "source": "local-kb"}
+{"id": "mary-thompson-demo-conflicts", "section": "allergy_conflicts", "text": "[{\"substance\": \"penicillin\", \"drug\": \"amoxicillin\", \"severity\": \"High\"}]", "source": "local-crosswalk"}
