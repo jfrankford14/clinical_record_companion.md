@@ -2,8 +2,6 @@
 
 This repository contains a deployable, medication-focused slice of the Clinical Record Companion experience. It parses Continuity of Care Documents (C-CDA) into normalized JSON, reconciles medication/allergy differences between facilities, and provides assets for Vertex AI Agent Builder plus an optional Streamlit UI.
 
-For component-level details see [`ccr/README.md`](ccr/README.md). The highlights are repeated below for convenience.
-
 ## Datasets & scenarios
 
 Two curated data packs live under `data/` so a single build can validate the longitudinal diabetes journey and the focused medication-safety checks:
@@ -27,6 +25,54 @@ Two curated data packs live under `data/` so a single build can validate the lon
                                                                Vertex AI Agent Builder tools
                                                                + optional Streamlit front-end
 ```
+
+## Service API reference
+
+### Cloud Function: `parse-ccda`
+
+- **Request**
+
+  ```json
+  {"gcs_uri": "gs://<PROJECT>-ccda-raw/path/to/file.xml"}
+  ```
+
+- **Response**
+
+  ```json
+  {"parsed_json_gcs": "gs://<PROJECT>-ccda-parsed/path/to/file.json"}
+  ```
+
+  The function writes the normalized JSON to the parsed bucket and returns its URI (only URIs are logged, never PHI). For local
+  experiments without deploying to Cloud Functions reuse the same extractor:
+
+  ```bash
+  python -m ccr.functions.parse_ccda.main data/diabetes/01_PrimaryCare_Initial_Diagnosis.xml \
+    --output /tmp/initial_diagnosis.json
+  ```
+
+### Cloud Run: `reconcile`
+
+- **Request**
+
+  ```json
+  {"a_json_gcs": "gs://bucket/a.json", "b_json_gcs": "gs://bucket/b.json"}
+  ```
+
+- **Response highlights**
+
+  ```json
+  {
+    "unified_meds": [{"name": "Metformin", "sources": ["A", "B"]}],
+    "unified_allergies": [{"substance": "Penicillin", "source": "A", "status": "active"}],
+    "discrepancies": [{"name": "Glyburide", "only_in": "B"}],
+    "dd_interactions": [{"drug_a": "Warfarin", "drug_b": "Amoxicillin", "severity": "moderate"}],
+    "allergy_conflicts": [{"substance": "Penicillin", "linked_drug": "Amoxicillin"}],
+    "sources": {"A": "North Valley Hospital", "B": "Southside Clinic"},
+    "tags": ["ddi_detected", "med_discrepancy"]
+  }
+  ```
+
+Run locally with `uvicorn app:app --reload` after installing `ccr/services/reconcile/requirements.txt`, or deploy via `gcloud run deploy` as scripted in `ccr/infra/deploy.sh`.
 
 ## Deploy workflow
 
@@ -76,7 +122,7 @@ curl -s -X POST "$RECON_URL/reconcile" -H "Content-Type: application/json" \
 3. Use the deployed endpoints for invocation.
 4. Recommended prompts: "Parse the latest CCDAs and flag med discrepancies" or "Highlight drug interactions and allergy conflicts for this transfer."
 
-A TODO for Vertex AI Search datastore `patient-data_1762901262843` lives in `ccr/agent/README.md` once access is granted.
+> **Future enhancement:** integrate Vertex AI Search datastore `patient-data_1762901262843` once permissions arrive so the agent can ground longitudinal labs and care plans.
 
 ## Optional UI
 
@@ -109,7 +155,31 @@ Before publishing updates to `init/ccr-demo`, run the quick checks below to keep
 
 * Twenty synthetic CCDA files under `data/diabetes/` chronicle a type 2 diabetes journey across 2022–2024.
 * The med-safety pack in `data/med-safety-contra/` expands coverage to allergy conflicts and contraindicated combinations validated by the scenario tests.
-* Use the updated 3-minute walkthrough in `ccr/README.md` to align the story with the available data when presenting the demo.
+
+## Updated 3-minute demo script
+
+**Goal:** Show how Clinical Record Companion accelerates medication reconciliation using the provided 20-file diabetes journey.
+
+1. **Set the stage (0:00–0:30)**
+   - "We just received 20 C-CDA packets for Maria Gonzales, a patient with type 2 diabetes transferring to our clinic. They span primary care, endocrinology, labs, and pharmacy visits from early 2022 through late 2024."
+   - "I'll drop the first two records—`01_PrimaryCare_Initial_Diagnosis.xml` and `02_LabFacility_Initial_HbA1c.xml`—into the raw bucket to show the workflow."
+
+2. **Trigger parsing (0:30–1:15)**
+   - Execute the Cloud Function call for each file: "The function extracts patient identifiers, encounter dates, meds like Metformin initiation, and Penicillin allergy entries. It saves structured JSON back to `gs://<project>-ccda-parsed/...`."
+   - Mention that repeating the call for files `03` through `20` takes seconds thanks to automation.
+
+3. **Run reconciliation (1:15–2:00)**
+   - Pick two contrasting encounters—e.g., `09_Endocrinology___Medication_Adjustment_Visit.json` vs `12_Emergency_Department___DKA_Visit.json`—and call the Cloud Run `/reconcile` endpoint.
+   - Highlight the output: "Unified meds show basal-bolus insulin from the endo visit and the ED's short-term antibiotics. Discrepancies flag that the ED list still includes Sulfonylurea even though endocrinology discontinued it." Mention DDIs (Warfarin + Amoxicillin example) if present.
+
+4. **Agent perspective (2:00–2:30)**
+   - In Vertex AI Agent Builder, show the agent calling `parse_ccda` for two facilities and then `reconcile_records`. "The agent cites North Valley Hospital (March 2023) vs Southside Clinic (April 2023) while summarizing med conflicts."
+
+5. **Close with value (2:30–3:00)**
+   - "Instead of manually reading 20 XML files, clinicians get a clean diff, flagged interactions, and allergy conflicts in under a minute."
+   - "Once Vertex AI Search access is granted, we can ground additional context like labs and care plans using datastore `patient-data_1762901262843`."
+
+Use this script alongside the provided prompts to stay aligned with the curated dataset.
 
 ## Local workspace quick-reference
 
