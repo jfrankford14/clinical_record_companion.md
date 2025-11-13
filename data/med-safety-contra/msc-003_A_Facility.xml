@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ClinicalDocument xmlns="urn:hl7-org:v3">
+  <effectiveTime value="20240401" />
+  <recordTarget>
+    <patientRole>
+      <id extension="MSC003A" />
+      <patient>
+        <name>
+          <given>David</given>
+          <family>Chen</family>
+        </name>
+      </patient>
+      <providerOrganization>
+        <name>Southside Endocrinology</name>
+      </providerOrganization>
+    </patientRole>
+  </recordTarget>
+  <component>
+    <structuredBody>
+      <component>
+        <section>
+          <code code="10160-0" displayName="Medications" />
+          <entry>
+            <substanceAdministration classCode="SBADM" moodCode="EVN">
+              <doseQuantity value="5" unit="mg" />
+              <routeCode displayName="Oral" />
+              <consumable>
+                <manufacturedProduct>
+                  <manufacturedMaterial>
+                    <code displayName="Glipizide 5 mg tablet" />
+                  </manufacturedMaterial>
+                </manufacturedProduct>
+              </consumable>
+            </substanceAdministration>
+          </entry>
+          <entry>
+            <substanceAdministration classCode="SBADM" moodCode="EVN">
+              <doseQuantity value="1000" unit="mg" />
+              <routeCode displayName="Oral" />
+              <consumable>
+                <manufacturedProduct>
+                  <manufacturedMaterial>
+                    <code displayName="Metformin" />
+                  </manufacturedMaterial>
+                </manufacturedProduct>
+              </consumable>
+            </substanceAdministration>
+          </entry>
+        </section>
+      </component>
+    </structuredBody>
+  </component>
+</ClinicalDocument>

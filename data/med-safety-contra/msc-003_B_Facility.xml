@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ClinicalDocument xmlns="urn:hl7-org:v3">
+  <effectiveTime value="20240405" />
+  <recordTarget>
+    <patientRole>
+      <id extension="MSC003B" />
+      <patient>
+        <name>
+          <given>David</given>
+          <family>Chen</family>
+        </name>
+      </patient>
+      <providerOrganization>
+        <name>Midwest Hospital</name>
+      </providerOrganization>
+    </patientRole>
+  </recordTarget>
+  <component>
+    <structuredBody>
+      <component>
+        <section>
+          <code code="10160-0" displayName="Medications" />
+          <entry>
+            <substanceAdministration classCode="SBADM" moodCode="EVN">
+              <doseQuantity value="10" unit="mg" />
+              <routeCode displayName="Oral" />
+              <consumable>
+                <manufacturedProduct>
+                  <manufacturedMaterial>
+                    <code displayName="Glipizide ER 10 mg" />
+                  </manufacturedMaterial>
+                </manufacturedProduct>
+              </consumable>
+            </substanceAdministration>
+          </entry>
+        </section>
+      </component>
+    </structuredBody>
+  </component>
+</ClinicalDocument>

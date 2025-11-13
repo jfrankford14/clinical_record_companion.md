@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ClinicalDocument xmlns="urn:hl7-org:v3">
+  <effectiveTime value="20240310" />
+  <recordTarget>
+    <patientRole>
+      <id extension="MSC002A" />
+      <patient>
+        <name>
+          <given>Angela</given>
+          <family>Stone</family>
+        </name>
+      </patient>
+      <providerOrganization>
+        <name>Primary Allergy Clinic</name>
+      </providerOrganization>
+    </patientRole>
+  </recordTarget>
+  <component>
+    <structuredBody>
+      <component>
+        <section>
+          <code code="48765-2" displayName="Allergies and Adverse Reactions" />
+          <entry>
+            <observation classCode="OBS" moodCode="EVN">
+              <statusCode code="active" />
+              <participant>
+                <participantRole>
+                  <playingEntity>
+                    <code displayName="Sulfa" />
+                  </playingEntity>
+                </participantRole>
+              </participant>
+              <entryRelationship typeCode="SUBJ">
+                <observation>
+                  <code code="ASSERTION" />
+                  <value displayName="Rash" />
+                </observation>
+              </entryRelationship>
+            </observation>
+          </entry>
+        </section>
+      </component>
+    </structuredBody>
+  </component>
+</ClinicalDocument>

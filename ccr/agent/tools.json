@@ -1,0 +1,132 @@
+[
+  {
+    "name": "parse_ccda",
+    "description": "Parse a C-CDA XML file stored in Cloud Storage into normalized medication/allergy JSON.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "gcs_uri": {
+          "type": "string",
+          "description": "Cloud Storage URI (gs://bucket/path/file.xml) for the source C-CDA document."
+        }
+      },
+      "required": ["gcs_uri"],
+      "additionalProperties": false
+    },
+    "output_schema": {
+      "type": "object",
+      "properties": {
+        "parsed_json_gcs": {
+          "type": "string",
+          "description": "Cloud Storage URI (gs://bucket/path/file.json) containing the parsed JSON payload."
+        }
+      },
+      "required": ["parsed_json_gcs"],
+      "additionalProperties": false
+    }
+  },
+  {
+    "name": "reconcile_records",
+    "description": "Compare two parsed medication/allergy JSON payloads and surface unified lists, discrepancies, and risk signals.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "a_json_gcs": {
+          "type": "string",
+          "description": "Cloud Storage URI for parsed JSON from facility A (output of parse_ccda)."
+        },
+        "b_json_gcs": {
+          "type": "string",
+          "description": "Cloud Storage URI for parsed JSON from facility B (output of parse_ccda)."
+        }
+      },
+      "required": ["a_json_gcs", "b_json_gcs"],
+      "additionalProperties": false
+    },
+    "output_schema": {
+      "type": "object",
+      "properties": {
+        "unified_meds": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {"type": "string"},
+              "sources": {
+                "type": "array",
+                "items": {"type": "string"}
+              }
+            },
+            "required": ["name", "sources"],
+            "additionalProperties": true
+          }
+        },
+        "unified_allergies": {
+          "type": "array",
+          "items": {"type": "object"}
+        },
+        "discrepancies": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {"type": "string"},
+              "only_in": {"type": "string"}
+            },
+            "required": ["name", "only_in"],
+            "additionalProperties": true
+          }
+        },
+        "dd_interactions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "drug_a": {"type": "string"},
+              "drug_b": {"type": "string"},
+              "severity": {"type": "string"},
+              "note": {"type": ["string", "null"]}
+            },
+            "required": ["drug_a", "drug_b", "severity"],
+            "additionalProperties": true
+          }
+        },
+        "allergy_conflicts": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "substance": {"type": "string"},
+              "linked_drug": {"type": "string"},
+              "severity": {"type": ["string", "null"]}
+            },
+            "required": ["substance", "linked_drug"],
+            "additionalProperties": true
+          }
+        },
+        "sources": {
+          "type": "object",
+          "properties": {
+            "A": {"type": ["string", "null"]},
+            "B": {"type": ["string", "null"]}
+          },
+          "additionalProperties": true
+        },
+        "tags": {
+          "type": "array",
+          "description": "Optional labels that highlight which risk dimensions triggered (ddi_detected, allergy_conflict, med_discrepancy).",
+          "items": {"type": "string"}
+        }
+      },
+      "required": [
+        "unified_meds",
+        "unified_allergies",
+        "discrepancies",
+        "dd_interactions",
+        "allergy_conflicts",
+        "sources"
+      ],
+      "additionalProperties": false
+    }
+  }
+]
