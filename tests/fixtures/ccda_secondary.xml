@@ -1,0 +1,80 @@
+<ClinicalDocument xmlns="urn:hl7-org:v3" xmlns:sdtc="urn:hl7-org:sdtc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <component>
+    <structuredBody>
+      <component>
+        <section>
+          <code code="10160-0" displayName="Medications" />
+          <entry>
+            <substanceAdministration>
+              <effectiveTime>
+                <low value="20221201" />
+              </effectiveTime>
+              <statusCode code="completed" />
+              <doseQuantity value="20" unit="mg" />
+              <routeCode code="IV" displayName="Intravenous" />
+              <consumable>
+                <manufacturedProduct>
+                  <manufacturedMaterial>
+                    <code code="1111" displayName="Lisinopril 20 MG" />
+                  </manufacturedMaterial>
+                </manufacturedProduct>
+              </consumable>
+            </substanceAdministration>
+          </entry>
+          <entry>
+            <substanceAdministration>
+              <effectiveTime>
+                <low value="20240215" />
+              </effectiveTime>
+              <statusCode code="active" />
+              <doseQuantity value="1" unit="tablet" />
+              <consumable>
+                <manufacturedProduct>
+                  <manufacturedMaterial>
+                    <code code="2222" displayName="Aspirin 81 MG" />
+                  </manufacturedMaterial>
+                </manufacturedProduct>
+              </consumable>
+            </substanceAdministration>
+          </entry>
+        </section>
+      </component>
+      <component>
+        <section>
+          <code code="48765-2" displayName="Allergies" />
+          <entry>
+            <observation>
+              <participant>
+                <participantRole>
+                  <playingEntity>
+                    <code code="3000" displayName="Peanuts" />
+                    <name>Peanuts</name>
+                  </playingEntity>
+                </participantRole>
+              </participant>
+              <entryRelationship typeCode="MFST">
+                <observation>
+                  <text>Anaphylaxis</text>
+                </observation>
+              </entryRelationship>
+            </observation>
+          </entry>
+        </section>
+      </component>
+      <component>
+        <section>
+          <code code="11450-4" displayName="Problems" />
+          <entry>
+            <observation>
+              <value code="I10" displayName="Hypertension" />
+              <effectiveTime>
+                <low value="20210101" />
+              </effectiveTime>
+              <statusCode code="completed" />
+            </observation>
+          </entry>
+        </section>
+      </component>
+    </structuredBody>
+  </component>
+</ClinicalDocument>

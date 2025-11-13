@@ -1,0 +1,178 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Clinical Record Companion APIs",
+    "version": "v2"
+  },
+  "paths": {
+    "/": {
+      "post": {
+        "operationId": "parseCcda",
+        "summary": "Parse CCDA XML from GCS",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ParseRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Parsed summary written to GCS",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ParseResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/reconcile": {
+      "post": {
+        "operationId": "reconcileRecords",
+        "summary": "Unify parsed CCDA JSON payloads",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReconcileRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Merged medication/allergy data with safety tags",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReconcileResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ParseRequest": {
+        "type": "object",
+        "required": ["gcs_uri"],
+        "properties": {
+          "gcs_uri": {
+            "type": "string",
+            "description": "gs:// URI for the CCDA XML"
+          }
+        }
+      },
+      "ParseResponse": {
+        "type": "object",
+        "required": ["parsed_json_gcs", "summary"],
+        "properties": {
+          "parsed_json_gcs": {
+            "type": "string",
+            "description": "gs:// URI of the normalized JSON"
+          },
+          "summary": {
+            "type": "object",
+            "required": ["med_count", "allergy_count", "problem_count"],
+            "properties": {
+              "med_count": {"type": "integer"},
+              "allergy_count": {"type": "integer"},
+              "problem_count": {"type": "integer"}
+            }
+          }
+        }
+      },
+      "ReconcileRequest": {
+        "type": "object",
+        "required": ["a_json_gcs", "b_json_gcs"],
+        "properties": {
+          "a_json_gcs": {"type": "string"},
+          "b_json_gcs": {"type": "string"}
+        }
+      },
+      "Medication": {
+        "type": "object",
+        "properties": {
+          "name": {"type": "string"},
+          "rxnorm_code": {"type": ["string", "null"]},
+          "start_date": {"type": ["string", "null"]}
+        }
+      },
+      "Allergy": {
+        "type": "object",
+        "properties": {
+          "substance": {"type": "string"},
+          "severity": {"type": ["string", "null"]}
+        }
+      },
+      "ReconcileResponse": {
+        "type": "object",
+        "required": [
+          "unified_meds",
+          "unified_allergies",
+          "discrepancies",
+          "dd_interactions",
+          "allergy_conflicts",
+          "sources",
+          "tags",
+          "version"
+        ],
+        "properties": {
+          "unified_meds": {
+            "type": "array",
+            "items": {"$ref": "#/components/schemas/Medication"}
+          },
+          "unified_allergies": {
+            "type": "array",
+            "items": {"$ref": "#/components/schemas/Allergy"}
+          },
+          "discrepancies": {
+            "type": "object",
+            "properties": {
+              "med_lists": {
+                "type": "object",
+                "properties": {
+                  "only_in_a": {"type": "array", "items": {"type": "string"}},
+                  "only_in_b": {"type": "array", "items": {"type": "string"}}
+                }
+              }
+            }
+          },
+          "dd_interactions": {
+            "type": "array",
+            "items": {"type": "object"}
+          },
+          "allergy_conflicts": {
+            "type": "array",
+            "items": {"type": "object"}
+          },
+          "sources": {
+            "type": "object",
+            "properties": {
+              "a": {"type": "string"},
+              "b": {"type": "string"}
+            }
+          },
+          "tags": {
+            "type": "array",
+            "items": {"type": "string"}
+          },
+          "version": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

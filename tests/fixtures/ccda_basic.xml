@@ -1,0 +1,70 @@
+<ClinicalDocument xmlns="urn:hl7-org:v3" xmlns:sdtc="urn:hl7-org:sdtc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <component>
+    <structuredBody>
+      <component>
+        <section>
+          <code code="10160-0" displayName="Medications" />
+          <entry>
+            <substanceAdministration>
+              <effectiveTime>
+                <low value="20230101" />
+                <high value="20230201" />
+              </effectiveTime>
+              <statusCode code="active" />
+              <doseQuantity value="500" unit="mg" />
+              <routeCode code="PO" displayName="Oral" />
+              <consumable>
+                <manufacturedProduct>
+                  <manufacturedMaterial>
+                    <code code="860975" displayName="Metformin 500 MG" />
+                  </manufacturedMaterial>
+                </manufacturedProduct>
+              </consumable>
+            </substanceAdministration>
+          </entry>
+        </section>
+      </component>
+      <component>
+        <section>
+          <code code="48765-2" displayName="Allergies" />
+          <entry>
+            <observation>
+              <participant>
+                <participantRole>
+                  <playingEntity>
+                    <code code="7982" displayName="Penicillin" />
+                    <name>Penicillin</name>
+                  </playingEntity>
+                </participantRole>
+              </participant>
+              <entryRelationship typeCode="MFST">
+                <observation>
+                  <text>Hives</text>
+                </observation>
+              </entryRelationship>
+              <entryRelationship typeCode="SUBJ">
+                <observation>
+                  <text>severe</text>
+                </observation>
+              </entryRelationship>
+            </observation>
+          </entry>
+        </section>
+      </component>
+      <component>
+        <section>
+          <code code="11450-4" displayName="Problems" />
+          <entry>
+            <observation>
+              <value code="E11" displayName="Type 2 diabetes mellitus" />
+              <effectiveTime>
+                <low value="20220115" />
+              </effectiveTime>
+              <statusCode code="active" />
+            </observation>
+          </entry>
+        </section>
+      </component>
+    </structuredBody>
+  </component>
+</ClinicalDocument>

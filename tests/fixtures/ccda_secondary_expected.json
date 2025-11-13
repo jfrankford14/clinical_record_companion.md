@@ -1,0 +1,40 @@
+{
+  "medications": [
+    {
+      "rxnorm_code": "1111",
+      "name": "Lisinopril 20 MG",
+      "strength": "20 mg",
+      "route": "Intravenous",
+      "frequency": null,
+      "start_date": "2022-12-01",
+      "end_date": null,
+      "status": "completed"
+    },
+    {
+      "rxnorm_code": "2222",
+      "name": "Aspirin 81 MG",
+      "strength": "1 tablet",
+      "route": null,
+      "frequency": null,
+      "start_date": "2024-02-15",
+      "end_date": null,
+      "status": "active"
+    }
+  ],
+  "allergies": [
+    {
+      "code": "3000",
+      "substance": "Peanuts",
+      "reaction": "Anaphylaxis",
+      "severity": null
+    }
+  ],
+  "problems": [
+    {
+      "code": "I10",
+      "description": "Hypertension",
+      "onset_date": "2021-01-01",
+      "status": "completed"
+    }
+  ]
+}
