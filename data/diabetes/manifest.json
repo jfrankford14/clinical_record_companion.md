@@ -1,0 +1,9 @@
+{
+  "dataset": "diabetes",
+  "description": "~20 C-CDA XML files for diabetes cohort demos.",
+  "format": "ccda-xml",
+  "encoding": "utf-8",
+  "file_glob": "data/diabetes/*.xml",
+  "schema_notes": "Minimal CCDA sections parsed: patient, facility, medications, allergies, problems.",
+  "files": []
+}
