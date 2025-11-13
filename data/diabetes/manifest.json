@@ -1,0 +1,29 @@
+{
+  "dataset": "diabetes",
+  "scenarios": [
+    {
+      "id": "dia-001",
+      "title": "Early vs late endocrinology encounters",
+      "files": [
+        "03_Endocrinology_Consultation___Initial_Specialist_Visit.xml",
+        "16_Endocrinology___Starting_Insulin_Therapy.xml"
+      ],
+      "expected": {
+        "ddi_pairs": [],
+        "allergy_conflicts": []
+      }
+    },
+    {
+      "id": "dia-002",
+      "title": "Emergency discharge comparison",
+      "files": [
+        "17_Hospital_Admission___Diabetic_Ketoacidosis_(DKA).xml",
+        "18_Hospital_Discharge_Summary___Post_DKA.xml"
+      ],
+      "expected": {
+        "ddi_pairs": [],
+        "allergy_conflicts": []
+      }
+    }
+  ]
+}

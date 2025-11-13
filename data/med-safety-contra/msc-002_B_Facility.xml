@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ClinicalDocument xmlns="urn:hl7-org:v3">
+  <effectiveTime value="20240312" />
+  <recordTarget>
+    <patientRole>
+      <id extension="MSC002B" />
+      <patient>
+        <name>
+          <given>Angela</given>
+          <family>Stone</family>
+        </name>
+      </patient>
+      <providerOrganization>
+        <name>Community Urgent Care</name>
+      </providerOrganization>
+    </patientRole>
+  </recordTarget>
+  <component>
+    <structuredBody>
+      <component>
+        <section>
+          <code code="10160-0" displayName="Medications" />
+          <entry>
+            <substanceAdministration classCode="SBADM" moodCode="EVN">
+              <effectiveTime value="20240312" />
+              <doseQuantity value="800" unit="mg" />
+              <routeCode displayName="Oral" />
+              <consumable>
+                <manufacturedProduct>
+                  <manufacturedMaterial>
+                    <code displayName="Trimethoprim-sulfamethoxazole" />
+                  </manufacturedMaterial>
+                </manufacturedProduct>
+              </consumable>
+            </substanceAdministration>
+          </entry>
+        </section>
+      </component>
+    </structuredBody>
+  </component>
+</ClinicalDocument>
