@@ -1,0 +1,5 @@
+drug_a,drug_b,severity,note
+Warfarin,Amoxicillin,moderate,May increase bleeding risk
+Insulin,Fluoroquinolone,moderate,Rare dysglycemia reported
+Sulfonylurea,Trimethoprim-sulfamethoxazole,major,Severe hypoglycemia risk
+Warfarin,Trimethoprim-sulfamethoxazole,major,Marked INR elevation risk

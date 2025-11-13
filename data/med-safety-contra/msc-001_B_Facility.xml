@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ClinicalDocument xmlns="urn:hl7-org:v3">
+  <effectiveTime value="20240205" />
+  <recordTarget>
+    <patientRole>
+      <id extension="MSC001B" />
+      <patient>
+        <name>
+          <given>Maria</given>
+          <family>Lopez</family>
+        </name>
+      </patient>
+      <providerOrganization>
+        <name>Northside Urgent Care</name>
+      </providerOrganization>
+    </patientRole>
+  </recordTarget>
+  <component>
+    <structuredBody>
+      <component>
+        <section>
+          <code code="10160-0" displayName="Medications" />
+          <entry>
+            <substanceAdministration classCode="SBADM" moodCode="EVN">
+              <effectiveTime value="20240205" />
+              <doseQuantity value="500" unit="mg" />
+              <routeCode displayName="Oral" />
+              <consumable>
+                <manufacturedProduct>
+                  <manufacturedMaterial>
+                    <code displayName="Amoxicillin" />
+                  </manufacturedMaterial>
+                </manufacturedProduct>
+              </consumable>
+            </substanceAdministration>
+          </entry>
+        </section>
+      </component>
+    </structuredBody>
+  </component>
+</ClinicalDocument>

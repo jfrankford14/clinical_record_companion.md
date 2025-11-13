@@ -1,0 +1,51 @@
+{
+  "dataset": "med-safety-contra",
+  "scenarios": [
+    {
+      "id": "msc-001",
+      "title": "Warfarin + Amoxicillin interaction",
+      "files": [
+        "msc-001_A_Facility.xml",
+        "msc-001_B_Facility.xml"
+      ],
+      "expected": {
+        "ddi_pairs": [
+          ["Warfarin", "Amoxicillin"]
+        ],
+        "allergy_conflicts": []
+      }
+    },
+    {
+      "id": "msc-002",
+      "title": "Sulfa allergy vs TMP-SMX",
+      "files": [
+        "msc-002_A_Facility.xml",
+        "msc-002_B_Facility.xml"
+      ],
+      "expected": {
+        "ddi_pairs": [],
+        "allergy_conflicts": [
+          {
+            "substance": "Sulfa",
+            "drug": "Trimethoprim-sulfamethoxazole"
+          }
+        ]
+      }
+    },
+    {
+      "id": "msc-003",
+      "title": "Duplicate sulfonylurea therapy",
+      "files": [
+        "msc-003_A_Facility.xml",
+        "msc-003_B_Facility.xml"
+      ],
+      "expected": {
+        "ddi_pairs": [],
+        "allergy_conflicts": [],
+        "discrepancies_contains": [
+          "Glipizide"
+        ]
+      }
+    }
+  ]
+}
