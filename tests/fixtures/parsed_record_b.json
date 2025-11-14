@@ -1,0 +1,20 @@
+{
+  "medications": [
+    {
+      "name": "Amoxicillin",
+      "rxnorm_code": "789",
+      "start_date": "2024-02-02"
+    },
+    {
+      "name": "Penicillin VK",
+      "rxnorm_code": "790",
+      "start_date": "2024-02-10"
+    }
+  ],
+  "allergies": [
+    {
+      "substance": "Penicillin VK",
+      "severity": "moderate"
+    }
+  ]
+}

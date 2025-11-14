@@ -1,0 +1,30 @@
+{
+  "medications": [
+    {
+      "rxnorm_code": "860975",
+      "name": "Metformin 500 MG",
+      "strength": "500 mg",
+      "route": "Oral",
+      "frequency": null,
+      "start_date": "2023-01-01",
+      "end_date": "2023-02-01",
+      "status": "active"
+    }
+  ],
+  "allergies": [
+    {
+      "code": "7982",
+      "substance": "Penicillin",
+      "reaction": "Hives",
+      "severity": "severe"
+    }
+  ],
+  "problems": [
+    {
+      "code": "E11",
+      "description": "Type 2 diabetes mellitus",
+      "onset_date": "2022-01-15",
+      "status": "active"
+    }
+  ]
+}

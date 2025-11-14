@@ -1,65 +1,79 @@
+import json
 import sys
-import xml.etree.ElementTree as ET
 from pathlib import Path
+
+import pytest
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
-from ccr.functions.parse_ccda import main as parse_main
+from v2.ccr.functions.parse_ccda import main as parse_main
+
+FIXTURES = PROJECT_ROOT / "tests" / "fixtures"
 
 
-def load_root(filename: str) -> ET.Element:
-    path = Path(__file__).resolve().parents[1] / "data" / "diabetes" / filename
-    return ET.parse(path).getroot()
+def _load_fixture(name: str) -> str:
+    return (FIXTURES / name).read_text()
 
 
-def test_extract_patient_and_encounter_details():
-    root = load_root("01_PrimaryCare_Initial_Diagnosis.xml")
+def _load_expected(name: str) -> dict:
+    return json.loads((FIXTURES / name).read_text())
 
-    patient = parse_main._extract_patient(root)
-    encounter = parse_main._extract_encounter(root)
 
-    assert patient == {
-        "id": "555-77-8888",
-        "name": "John Michael Martinez",
+def test_build_parsed_document_matches_golden_basic():
+    payload = parse_main.build_parsed_document(_load_fixture("ccda_basic.xml"), "gs://demo/basic.xml")
+    expected = _load_expected("ccda_basic_expected.json")
+
+    assert payload["medications"] == expected["medications"]
+    assert payload["allergies"] == expected["allergies"]
+    assert payload["problems"] == expected["problems"]
+    assert payload["summary"] == {
+        "med_count": len(expected["medications"]),
+        "allergy_count": len(expected["allergies"]),
+        "problem_count": len(expected["problems"]),
     }
-    assert encounter["facility"] == "Chicago Family Medicine Clinic"
-    assert encounter["date"] == "20220115"
 
 
-def test_extract_medications_includes_metformin_and_lisinopril():
-    root = load_root("01_PrimaryCare_Initial_Diagnosis.xml")
+def test_build_parsed_document_matches_golden_secondary():
+    payload = parse_main.build_parsed_document(_load_fixture("ccda_secondary.xml"), "gs://demo/secondary.xml")
+    expected = _load_expected("ccda_secondary_expected.json")
 
-    meds = parse_main._extract_medications(root)
-    names = {entry["name"] for entry in meds}
-
-    assert "Metformin 500 MG Oral Tablet" in names
-    assert "Lisinopril 10 MG Oral Tablet" in names
-
-    metformin = next(item for item in meds if item["name"] == "Metformin 500 MG Oral Tablet")
-    assert metformin["dose"] == {"value": "500", "unit": "mg"}
-    assert metformin["route"] == "Oral"
+    assert payload["medications"] == expected["medications"]
+    assert payload["allergies"] == expected["allergies"]
+    assert payload["problems"] == expected["problems"]
 
 
-def test_extract_allergies_returns_penincillin_history():
-    root = load_root("01_PrimaryCare_Initial_Diagnosis.xml")
+def test_build_parsed_document_handles_malformed_xml():
+    payload = parse_main.build_parsed_document(_load_fixture("ccda_malformed.xml"), "gs://demo/bad.xml")
 
-    allergies = parse_main._extract_allergies(root)
-    assert allergies, "Expected at least one allergy entry"
-
-    penicillin = next(item for item in allergies if item["substance"] == "Penicillin")
-    assert penicillin["reaction"] == "Hives"
-    assert penicillin["severity"] == "Moderate"
-    assert penicillin["status"] == "completed"
+    assert payload["medications"] == []
+    assert payload["allergies"] == []
+    assert payload["provenance"]["source_document"]["gcs_uri"] == "gs://demo/bad.xml"
 
 
-def test_build_payload_matches_individual_extractors():
-    root = load_root("01_PrimaryCare_Initial_Diagnosis.xml")
+def test_parse_ccda_response_contract(monkeypatch: pytest.MonkeyPatch):
+    class DummyRequest:
+        def __init__(self, body: dict):
+            self._body = body
 
-    aggregate = parse_main._build_payload(root)
+        def get_json(self, silent: bool = True):  # noqa: FBT002
+            return self._body
 
-    assert aggregate["patient"] == parse_main._extract_patient(root)
-    assert aggregate["encounter"] == parse_main._extract_encounter(root)
-    assert aggregate["medications"] == parse_main._extract_medications(root)
-    assert aggregate["allergies"] == parse_main._extract_allergies(root)
+    xml_text = _load_fixture("ccda_basic.xml")
+    writes: dict = {}
+
+    monkeypatch.setattr(parse_main, "_read", lambda _: xml_text)
+
+    def fake_write(uri: str, text: str, content_type: str = "application/json") -> None:  # noqa: ARG001
+        writes["uri"] = uri
+        writes["text"] = text
+
+    monkeypatch.setattr(parse_main, "_write", fake_write)
+    response, status = parse_main.parse_ccda(DummyRequest({"gcs_uri": "gs://demo/basic.xml"}))
+
+    assert status == 200
+    assert "parsed_json_gcs" in response
+    assert "summary" in response
+    assert response["summary"]["med_count"] == 1
+    assert writes["uri"].endswith("basic.json")

@@ -1,0 +1,6 @@
+DrugA,DrugB,Severity,Note
+Warfarin,Amoxicillin,moderate,Amoxicillin may increase bleeding risk when combined with Warfarin.
+Warfarin,NSAID,major,Concurrent NSAID therapy elevates bleeding risk with Warfarin.
+Metformin,Cimetidine,moderate,Cimetidine raises metformin levels; monitor lactic acidosis risk.
+Lisinopril,Potassium supplement,major,Co-administration can lead to hyperkalemia.
+Simvastatin,Clarithromycin,major,Clarithromycin inhibits metabolism of simvastatin.

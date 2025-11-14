@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+*.pyo
+*.swp
+.env
+.venv/
+tests/
+../*/tests/
+README.md
+scripts/
+data/

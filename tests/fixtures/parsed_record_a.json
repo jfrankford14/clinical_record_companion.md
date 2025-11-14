@@ -1,0 +1,15 @@
+{
+  "medications": [
+    {
+      "name": "Warfarin",
+      "rxnorm_code": "123",
+      "start_date": "2024-01-01"
+    }
+  ],
+  "allergies": [
+    {
+      "substance": "Penicillin",
+      "severity": "severe"
+    }
+  ]
+}
