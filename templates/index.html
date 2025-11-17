@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Clinical Record Companion</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='styles.css') }}" />
+  </head>
+  <body>
+    <header>
+      <img src="{{ url_for('static', path='crc-logo.png') }}" alt="CRC logo" />
+      <div>
+        <h1>Clinical Record Companion</h1>
+        <p>Upload → Parse → Reconcile → Compare → Ask Gemini</p>
+      </div>
+    </header>
+    <main>
+      <div class="grid">
+        <section class="card" id="upload-card">
+          <h2>1. Upload CCDAs</h2>
+          <p class="badge">Current session: <span id="session-label">not started</span></p>
+          <label for="session-input">Use existing session ID (optional)</label>
+          <input id="session-input" type="text" placeholder="sessions/uuid or short name" />
+          <input id="file-input" type="file" accept=".xml,.XML" multiple />
+          <button id="upload-btn">Upload files</button>
+          <div id="upload-status" class="status" hidden></div>
+        </section>
+
+        <section class="card" id="parse-card">
+          <h2>2. Parse, Reconcile & Compare</h2>
+          <button id="parse-btn" disabled>Parse &amp; Reconcile</button>
+          <div id="parse-status" class="status" hidden></div>
+          <div>
+            <label>Parsed documents</label>
+            <ul id="parsed-list" class="list"></ul>
+          </div>
+          <div class="compare-controls">
+            <label for="compare-a">Document A</label>
+            <select id="compare-a"></select>
+            <label for="compare-b">Document B</label>
+            <select id="compare-b"></select>
+            <button id="compare-btn" disabled>Compare in CRC</button>
+          </div>
+          <pre id="compare-output" hidden></pre>
+        </section>
+
+        <section class="card" id="ask-card">
+          <h2>3. Ask Gemini</h2>
+          <textarea id="question" placeholder="Ask about meds, allergies, plans..." ></textarea>
+          <button id="ask-btn" disabled>Ask Gemini</button>
+          <div id="ask-status" class="status" hidden></div>
+          <div class="answer" id="answer-text"></div>
+          <button class="copy-btn" id="copy-answer" disabled>Copy answer</button>
+        </section>
+      </div>
+    </main>
+    <script>
+      const state = {
+        sessionId: '',
+        rawUris: [],
+        parsedUris: [],
+      };
+
+      const sessionLabel = document.getElementById('session-label');
+      const sessionInput = document.getElementById('session-input');
+      const uploadBtn = document.getElementById('upload-btn');
+      const uploadStatus = document.getElementById('upload-status');
+      const parseBtn = document.getElementById('parse-btn');
+      const parseStatus = document.getElementById('parse-status');
+      const parsedList = document.getElementById('parsed-list');
+      const compareA = document.getElementById('compare-a');
+      const compareB = document.getElementById('compare-b');
+      const compareBtn = document.getElementById('compare-btn');
+      const compareOutput = document.getElementById('compare-output');
+      const askBtn = document.getElementById('ask-btn');
+      const askStatus = document.getElementById('ask-status');
+      const answerText = document.getElementById('answer-text');
+      const copyAnswer = document.getElementById('copy-answer');
+      const fileInput = document.getElementById('file-input');
+      const questionBox = document.getElementById('question');
+
+      uploadBtn.addEventListener('click', async () => {
+        if (!fileInput.files.length) {
+          showStatus(uploadStatus, 'Select at least one CCDA.', true);
+          return;
+        }
+        const formData = new FormData();
+        for (const file of fileInput.files) {
+          formData.append('files[]', file);
+        }
+        const requestedSession = sessionInput.value.trim();
+        if (requestedSession) {
+          formData.append('session_id', requestedSession);
+        }
+        toggle(uploadBtn, true);
+        showStatus(uploadStatus, 'Uploading...', false);
+        try {
+          const response = await fetch('/ui/upload', {
+            method: 'POST',
+            body: formData,
+          });
+          if (!response.ok) {
+            throw new Error(await response.text());
+          }
+          const data = await response.json();
+          state.sessionId = data.session_id;
+          state.rawUris = data.raw_uris || [];
+          sessionLabel.textContent = state.sessionId;
+          sessionInput.value = state.sessionId;
+          parseBtn.disabled = false;
+          showStatus(uploadStatus, `Uploaded ${data.count} files.`, false);
+          await refreshSession();
+        } catch (err) {
+          showStatus(uploadStatus, err.message || 'Upload failed.', true);
+        } finally {
+          toggle(uploadBtn, false);
+        }
+      });
+
+      parseBtn.addEventListener('click', async () => {
+        if (!state.sessionId) {
+          showStatus(parseStatus, 'Upload files first.', true);
+          return;
+        }
+        toggle(parseBtn, true);
+        showStatus(parseStatus, 'Parsing & reconciling...', false);
+        try {
+          const response = await fetch('/ui/parse', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ session_id: state.sessionId }),
+          });
+          if (!response.ok) {
+            throw new Error(await response.text());
+          }
+          const data = await response.json();
+          state.parsedUris = data.parsed_uris || [];
+          showStatus(parseStatus, `Parsed ${state.parsedUris.length} files`, false);
+          await refreshSession();
+          compareBtn.disabled = state.parsedUris.length < 2;
+        } catch (err) {
+          showStatus(parseStatus, err.message || 'Parsing failed.', true);
+        } finally {
+          toggle(parseBtn, false);
+        }
+      });
+
+      compareBtn.addEventListener('click', async () => {
+        const aUri = compareA.value;
+        const bUri = compareB.value;
+        if (!aUri || !bUri) {
+          return;
+        }
+        compareBtn.disabled = true;
+        compareOutput.hidden = false;
+        compareOutput.textContent = 'Running comparison...';
+        try {
+          const response = await fetch('/ui/compare', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ a_uri: aUri, b_uri: bUri }),
+          });
+          if (!response.ok) {
+            throw new Error(await response.text());
+          }
+          const data = await response.json();
+          compareOutput.textContent = JSON.stringify(data, null, 2);
+        } catch (err) {
+          compareOutput.textContent = err.message || 'Compare failed.';
+        } finally {
+          compareBtn.disabled = false;
+        }
+      });
+
+      askBtn.addEventListener('click', async () => {
+        if (!state.sessionId) {
+          showStatus(askStatus, 'Upload and parse first.', true);
+          return;
+        }
+        const question = questionBox.value.trim();
+        if (!question) {
+          showStatus(askStatus, 'Enter a question.', true);
+          return;
+        }
+        toggle(askBtn, true);
+        copyAnswer.disabled = true;
+        answerText.textContent = '';
+        showStatus(askStatus, 'Asking Gemini...', false);
+        try {
+          const response = await fetch('/ui/ask', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ session_id: state.sessionId, question }),
+          });
+          if (!response.ok) {
+            throw new Error(await response.text());
+          }
+          const data = await response.json();
+          answerText.textContent = data.answer;
+          copyAnswer.disabled = !data.answer;
+          showStatus(askStatus, `Answer ready · ${data.used_chars || 0} chars`, false);
+        } catch (err) {
+          showStatus(askStatus, err.message || 'Gemini request failed.', true);
+        } finally {
+          toggle(askBtn, false);
+        }
+      });
+
+      copyAnswer.addEventListener('click', async () => {
+        if (!answerText.textContent) {
+          return;
+        }
+        await navigator.clipboard.writeText(answerText.textContent);
+        showStatus(askStatus, 'Copied to clipboard.', false);
+      });
+
+      async function refreshSession() {
+        if (!state.sessionId) {
+          return;
+        }
+        try {
+          const response = await fetch(`/ui/session?session_id=${encodeURIComponent(state.sessionId)}`);
+          if (!response.ok) {
+            throw new Error(await response.text());
+          }
+          const data = await response.json();
+          state.rawUris = data.raw_uris || [];
+          state.parsedUris = data.parsed_uris || [];
+          renderParsedList();
+          renderSelects();
+          compareBtn.disabled = state.parsedUris.length < 2;
+          askBtn.disabled = !state.parsedUris.length;
+        } catch (err) {
+          console.error(err);
+        }
+      }
+
+      function renderParsedList() {
+        parsedList.innerHTML = '';
+        state.parsedUris.forEach((uri) => {
+          const li = document.createElement('li');
+          li.textContent = uri;
+          parsedList.appendChild(li);
+        });
+      }
+
+      function renderSelects() {
+        compareA.innerHTML = '<option value="">Select document</option>';
+        compareB.innerHTML = '<option value="">Select document</option>';
+        state.rawUris.forEach((uri) => {
+          const optionA = document.createElement('option');
+          optionA.value = uri;
+          optionA.textContent = uri;
+          compareA.appendChild(optionA);
+          const optionB = optionA.cloneNode(true);
+          compareB.appendChild(optionB);
+        });
+      }
+
+      function showStatus(node, message, isError) {
+        node.hidden = false;
+        node.className = isError ? 'error' : 'status';
+        node.textContent = message;
+      }
+
+      function toggle(button, waiting) {
+        button.disabled = waiting;
+      }
+    </script>
+  </body>
+</html>
